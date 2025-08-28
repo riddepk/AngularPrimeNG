@@ -7,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrl: './header.css'
 })
 export class Header {
+    currentDateTime: string = '';
+
+  ngOnInit() {
+    setInterval(() => {
+      this.currentDateTime = new Date().toLocaleString();
+    }, 1000);
+  }
 
 }

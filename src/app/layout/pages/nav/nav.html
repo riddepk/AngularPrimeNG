@@ -1,5 +1,12 @@
+@if (currentUser()){
 <p-buttongroup>
-    <p-button label="Profile" icon="pi pi-user" />
+        <p-button (click)="logout()" severity="danger" label="Logout" icon="pi pi-sign-out"></p-button>
+        <p-button routerLink="/hello" severity="warn" label="Hello" icon="pi pi-sign-out"></p-button>
+</p-buttongroup>
+}
+@else{
+<p-buttongroup>
      <p-button routerLink="/register" label="Register" icon="pi pi-user-plus"></p-button>
     <p-button routerLink="/login" label="Login" icon="pi pi-sign-in"></p-button>
 </p-buttongroup>
+}
