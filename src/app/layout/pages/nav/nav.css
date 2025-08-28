@@ -2,5 +2,9 @@
   display: flex;
   padding: 0.5em;
   justify-content: space-around;
-  background-color:dodgerblue;
+  background-color:transparent;
+}
+.custom-button {
+  background-color: red;
+  font-size: 20px;
 }
