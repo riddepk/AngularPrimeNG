@@ -1,6 +1,7 @@
 import {inject, Injectable, signal, WritableSignal} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {LoginForm, RegisterForm, UserTokenDto} from '../models/user-dto';
+import {MaisonsDto} from '../models/maisons-dto';
 import {environment} from '../../../../environments/environment';
 import {Observable, tap} from 'rxjs';
 
@@ -31,6 +32,10 @@ export class AuthService {
           localStorage.setItem("currentUser", JSON.stringify(result))
         }),
       );
+  }
+
+  Maisons(form: MaisonsDto): Observable<MaisonsDto> {
+    return this._http.post<MaisonsDto>(this._apiUrl + "/maisons", form);
   }
 
   logout() {

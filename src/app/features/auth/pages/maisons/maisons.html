@@ -1,1 +1,17 @@
-<p>maisons works!</p>
+<p>Maison Work!</p>
+<p-table [value]="maisons" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>IP</th>
+      <th>User</th>
+      <th>HomeStatus</th>
+    </tr>
+  </ng-template>
+  <ng-template #body let-maison>
+    <tr>
+      <td>{{ maison.ip }}</td>
+      <td>{{ maison.username }}</td>
+      <td>{{ maison.homestatus }}</td>
+    </tr>
+  </ng-template>
+</p-table>

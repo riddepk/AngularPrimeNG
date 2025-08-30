@@ -22,6 +22,7 @@ import {AutoFocus} from 'primeng/autofocus';
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
+
 export class Login {
 
   private readonly _authService: AuthService = inject(AuthService);
