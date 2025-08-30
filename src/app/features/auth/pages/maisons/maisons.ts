@@ -5,13 +5,16 @@ import {Router} from '@angular/router';
 import {Maisonservice} from '../../../../services/maisonservice';
 import {Component, inject, OnInit} from '@angular/core';
 import {MaisonsDto} from '../../models/maisons-dto';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-maisons',
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    TableModule
+    TableModule,
+    CommonModule
   ],
   templateUrl: './maisons.html',
   styleUrl: './maisons.css'
@@ -27,14 +30,24 @@ export class Maisons implements OnInit{
   maisons: MaisonsDto[] = [];
 
   constructor(private maisonService:Maisonservice) {
-    /*    this.maisonsForm = this._fb.group({
-          ip: [null, [Validators.required]],
-          username: [null, [Validators.required]],
-          homestatus: [null, [Validators.required]],
-        });*/
                 }
   ngOnInit() : void{
     this.maisons =this.maisonService.initializerTableauMaisonnettes();
   }
+  onView(maison: MaisonsDto) {
+    console.log('Voir:', maison);
+    // Navigation ou affichage modal
+  }
+
+  onEdit(maison: MaisonsDto) {
+    console.log('Éditer:', maison);
+    // Redirection vers formulaire ou inline editing
+  }
+
+  onDelete(maison: MaisonsDto) {
+    console.log('Supprimer:', maison);
+    // Confirmation + suppression
+  }
+
 }
 

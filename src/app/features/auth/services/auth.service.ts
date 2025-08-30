@@ -4,6 +4,7 @@ import {LoginForm, RegisterForm, UserTokenDto} from '../models/user-dto';
 import {MaisonsDto} from '../models/maisons-dto';
 import {environment} from '../../../../environments/environment';
 import {Observable, tap} from 'rxjs';
+import {MaisonsDetailDto} from '../models/maisons-detail-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -34,8 +35,11 @@ export class AuthService {
       );
   }
 
-  Maisons(form: MaisonsDto): Observable<MaisonsDto> {
+  getMaisons(form: MaisonsDto): Observable<MaisonsDto> {
     return this._http.post<MaisonsDto>(this._apiUrl + "/maisons", form);
+  }
+  getMaisonsDetail(form: MaisonsDetailDto): Observable<MaisonsDetailDto> {
+    return this._http.post<MaisonsDetailDto>(this._apiUrl + "/maisons-detail", form);
   }
 
   logout() {

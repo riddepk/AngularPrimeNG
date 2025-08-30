@@ -15,8 +15,8 @@ import { UserTokenDto } from '../../../features/auth/models/user-dto';
   templateUrl: './nav.html',
   styleUrl: './nav.css'
 })
-export class Nav {
 
+export class Nav {
   private readonly _authService: AuthService = inject(AuthService);
   private readonly _router: Router = inject(Router);
 
