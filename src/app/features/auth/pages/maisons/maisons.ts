@@ -1,10 +1,11 @@
 import { TableModule } from 'primeng/table';
 import {AuthService} from '../../services/auth.service';
-import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Maisonservice} from '../../../../services/maisonservice';
 import {Component, inject, OnInit} from '@angular/core';
 import {MaisonsDto} from '../../models/maisons-dto';
+import {MaisonsDetail, MaisonsDetailDto} from '../../models/maisons-detail-dto';
 import { CommonModule } from '@angular/common';
 
 
@@ -28,14 +29,16 @@ export class Maisons implements OnInit{
 
   //maisonsForm: FormGroup;
   maisons: MaisonsDto[] = [];
+  maisonsdetail:MaisonsDetailDto[]=[];
 
-  constructor(private maisonService:Maisonservice) {
+  constructor(private maisonService:Maisonservice,private router:Router) {
                 }
   ngOnInit() : void{
+    console.log(this.maisonsdetail);
     this.maisons =this.maisonService.initializerTableauMaisonnettes();
   }
-  onView(maison: MaisonsDto) {
-    console.log('Voir:', maison);
+  onView(maisonsdetail: MaisonsDetail) {
+    this._router.navigate(['/maisons-detail',maisonsdetail.ip]);
     // Navigation ou affichage modal
   }
 
