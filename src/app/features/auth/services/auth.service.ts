@@ -1,6 +1,6 @@
 import {inject, Injectable, signal, WritableSignal} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {LoginForm, RegisterForm, UserTokenDto} from '../models/user-dto';
+import {LoginForm, RegisterForm, UserDto, UserTokenDto} from '../models/user-dto';
 import {MaisonsDto} from '../models/maisons-dto';
 import {environment} from '../../../../environments/environment';
 import {Observable, tap} from 'rxjs';
@@ -13,6 +13,7 @@ export class AuthService {
 
   private readonly _http: HttpClient = inject(HttpClient);
   private readonly _apiUrl = environment.API_URL + "/auth";
+  private readonly _currentUser = signal<UserDto | undefined>(undefined);
 
   currentUser: WritableSignal<UserTokenDto | undefined>;
 
@@ -40,6 +41,10 @@ export class AuthService {
   }
   getMaisonsDetail(form: MaisonsDetailDto): Observable<MaisonsDetailDto> {
     return this._http.post<MaisonsDetailDto>(this._apiUrl + "/maisons-detail", form);
+  }
+
+  getUser(): UserDto | undefined {
+    return this._currentUser(); // ✅ appel correct du signal
   }
 
   logout() {

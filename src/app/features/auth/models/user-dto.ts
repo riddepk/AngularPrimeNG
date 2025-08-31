@@ -7,6 +7,7 @@ export interface UserDto {
 
 // ----------- identifiants
 export interface UserTokenDto {
+  //username: string;
   user: UserDto;
   token: string;
 }

@@ -21,7 +21,7 @@
         {{ maison.homestatus }}
       </td>
       <td>
-        <button pButton class="pi pi-eye p-button-sm p-button-text" (click)="onView(maison)" ></button>
+        <button pButton class="pi pi-eye p-button-sm p-button-text" (click)="voirDetails(maison.username)" ></button>
         <button pButton class="pi pi-pencil p-button-sm p-button-text" (click)="onEdit(maison)" ></button>
         <button pButton class="pi pi-trash p-button-sm p-button-danger" (click)="onDelete(maison)" ></button>
       </td>

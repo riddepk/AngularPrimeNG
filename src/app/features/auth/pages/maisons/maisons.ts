@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-maisons',
+  standalone: true,
   imports: [
     FormsModule,
     ReactiveFormsModule,
@@ -27,7 +28,6 @@ export class Maisons implements OnInit{
   private readonly _fb: FormBuilder = inject(FormBuilder);
   private readonly _router: Router = inject(Router);
 
-  //maisonsForm: FormGroup;
   maisons: MaisonsDto[] = [];
   maisonsdetail:MaisonsDetailDto[]=[];
 
@@ -37,9 +37,8 @@ export class Maisons implements OnInit{
     console.log(this.maisonsdetail);
     this.maisons =this.maisonService.initializerTableauMaisonnettes();
   }
-  onView(maisonsdetail: MaisonsDetail) {
-    this._router.navigate(['/maisons-detail',maisonsdetail.ip]);
-    // Navigation ou affichage modal
+  voirDetails(username:string) {
+    this._router.navigate(['/maisons-detail',username]);
   }
 
   onEdit(maison: MaisonsDto) {

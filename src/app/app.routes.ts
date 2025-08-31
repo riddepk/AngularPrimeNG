@@ -30,7 +30,7 @@ export const routes: Routes = [
     loadComponent: () => import("./features/auth/pages/maisons/maisons").then(m => m.Maisons),
   },
   {
-    path: 'maisons-detail/:ip',
+    path: 'maisons-detail/:username',
     // Lazy loading du component (importe le component puis renvois l'instance à l'appel)
     loadComponent: () => import("./features/auth/pages/maisons-detail/maisons-detail").then(m => m.MaisonsDetail),
   },
