@@ -44,7 +44,7 @@ export class AuthService {
   }
 
   getUser(): UserDto | undefined {
-    return this._currentUser(); // ✅ appel correct du signal
+    return this._currentUser();
   }
 
   logout() {

@@ -32,7 +32,7 @@ export class Maisons implements OnInit{
   maisonsdetail:MaisonsDetailDto[]=[];
 
   constructor(private maisonService:Maisonservice,private router:Router) {
-                }
+  }
   ngOnInit() : void{
     console.log(this.maisonsdetail);
     this.maisons =this.maisonService.initializerTableauMaisonnettes();
@@ -52,4 +52,3 @@ export class Maisons implements OnInit{
   }
 
 }
-

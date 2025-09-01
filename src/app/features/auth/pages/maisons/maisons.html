@@ -2,6 +2,7 @@
 <p-table [value]="maisons" [tableStyle]="{ 'min-width': '50rem' }">
   <ng-template pTemplate="header">
     <tr>
+      <th>ID</th>
       <th>IP</th>
       <th>User</th>
       <th>HomeStatus</th>
@@ -9,6 +10,7 @@
   </ng-template>
   <ng-template #body let-maison>
     <tr>
+      <td>{{ maison.id }}</td>
       <td>{{ maison.ip }}</td>
       <td>{{ maison.username }}</td>
       <td>

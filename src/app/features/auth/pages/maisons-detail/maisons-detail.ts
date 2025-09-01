@@ -20,7 +20,7 @@ import {MaisonsDetailDto} from '../../models/maisons-detail-dto';
 })
 
 export class MaisonsDetail implements OnInit {
-  private readonly authService: AuthService = inject(AuthService);
+  //private readonly authService: AuthService = inject(AuthService);
   private readonly maisonsDetailService:MaisonsDetailservices = inject(MaisonsDetailservices);
 
   constructor(private route: ActivatedRoute) { }
@@ -32,11 +32,26 @@ export class MaisonsDetail implements OnInit {
   ngOnInit() : void {
     this.username = this.route.snapshot.paramMap.get('username')!;
     console.log('Nom sélectionné :', this.username);
-
+    this.getIpAddress();
+    console.log('Adresse IP :', this.ip);
     const allMaisons = this.maisonsDetailService.initializerTableauMaisonsDetail();
     console.log(allMaisons);
     console.log(this.username);
     this.maisonsdetail= allMaisons.filter(m =>m.username === this.username);
+  }
+
+
+  // ---------------------------------------- recuperer l'IP de mon PC
+  getIpAddress(): void {
+    fetch('https://api.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => {
+        this.ip= data.ip;
+        console.log('Adresse IP :', this.ip);
+      })
+      .catch(error => {
+        console.error('Erreur lors de la récupération de l\'IP :', error);
+      });
   }
 
 }
