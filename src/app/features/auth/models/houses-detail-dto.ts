@@ -1,11 +1,11 @@
-export interface MaisonsDetailDto {
+export interface HousesDetailDto {
   ip: string;
   username: string;
   homestatus: string;
   microcontroller:string;
   microcontrollerstatus:string;
 }
-export class MaisonsDetail {
+export class HousesDetail {
   constructor( _ip : string , _username  : string, _homestatus : string ,_microcontroller:string,_microcontrollerstatus:string){
     this.ip = _ip;
     this.username = _username;

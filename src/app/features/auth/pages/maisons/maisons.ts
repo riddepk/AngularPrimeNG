@@ -4,8 +4,8 @@ import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Maisonservice} from '../../../../services/maisonservice';
 import {Component, inject, OnInit} from '@angular/core';
-import {MaisonsDto} from '../../models/maisons-dto';
-import {MaisonsDetail, MaisonsDetailDto} from '../../models/maisons-detail-dto';
+import {HousesDto} from '../../models/houses-dto';
+import {HousesDetailDto} from '../../models/houses-detail-dto';
 import { CommonModule } from '@angular/common';
 
 
@@ -18,8 +18,8 @@ import { CommonModule } from '@angular/common';
     TableModule,
     CommonModule
   ],
-  templateUrl: './houses.html',
-  styleUrl: './houses.css'
+  templateUrl: './maisons.html',
+  styleUrl: './maisons.css'
 })
 
 
@@ -28,25 +28,25 @@ export class Maisons implements OnInit{
   private readonly _fb: FormBuilder = inject(FormBuilder);
   private readonly _router: Router = inject(Router);
 
-  maisons: MaisonsDto[] = [];
-  maisonsdetail:MaisonsDetailDto[]=[];
+  maisons: HousesDto[] = [];
+  maisonsdetail:HousesDetailDto[]=[];
 
   constructor(private maisonService:Maisonservice,private router:Router) {
   }
   ngOnInit() : void{
-    console.log(this.maisonsdetail);
+    console.log(this.maisons);
     this.maisons =this.maisonService.initializerTableauMaisonnettes();
   }
   voirDetails(username:string) {
     this._router.navigate(['/maisons-detail',username]);
   }
 
-  onEdit(maison: MaisonsDto) {
+  onEdit(maison: HousesDto) {
     console.log('Éditer:', maison);
     // Redirection vers formulaire ou inline editing
   }
 
-  onDelete(maison: MaisonsDto) {
+  onDelete(maison: HousesDto) {
     console.log('Supprimer:', maison);
     // Confirmation + suppression
   }

@@ -10,20 +10,20 @@
   </ng-template>
   <ng-template #body let-maison>
     <tr>
-      <td>{{ maison.id }}</td>
-      <td>{{ maison.ip }}</td>
-      <td>{{ maison.username }}</td>
+      <td>{{ maison.HouseId }}</td>
+      <td>{{ maison.HouseIP4 }}</td>
+      <td>{{ maison.HouseName }}</td>
       <td>
         <i class="pi pi-circle-fill"
            [ngClass]="{
-                     'text-green-500': maison.homestatus === 'ON',
-                     'text-red-500': maison.homestatus !== 'ON'
+                     'text-green-500': maison.IsHouseActive === true,
+                     'text-red-500': maison.IsHouseActive === false
                    }">
         </i>
         {{ maison.homestatus }}
       </td>
       <td>
-        <button pButton class="pi pi-eye p-button-sm p-button-text" (click)="voirDetails(maison.username)" ></button>
+        <button pButton class="pi pi-eye p-button-sm p-button-text" (click)="voirDetails(maison.HouseName)" ></button>
         <button pButton class="pi pi-pencil p-button-sm p-button-text" (click)="onEdit(maison)" ></button>
         <button pButton class="pi pi-trash p-button-sm p-button-danger" (click)="onDelete(maison)" ></button>
       </td>

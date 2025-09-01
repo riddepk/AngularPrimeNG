@@ -1,10 +1,10 @@
 import {inject, Injectable, signal, WritableSignal} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {LoginForm, RegisterForm, UserDto, UserTokenDto} from '../models/user-dto';
-import {MaisonsDto} from '../models/maisons-dto';
+import {HousesDto} from '../models/houses-dto';
 import {environment} from '../../../../environments/environment';
 import {Observable, tap} from 'rxjs';
-import {MaisonsDetailDto} from '../models/maisons-detail-dto';
+import {HousesDetailDto} from '../models/houses-detail-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -36,11 +36,11 @@ export class AuthService {
       );
   }
 
-  getMaisons(form: MaisonsDto): Observable<MaisonsDto> {
-    return this._http.post<MaisonsDto>(this._apiUrl + "/maisons", form);
+  getMaisons(form: HousesDto): Observable<HousesDto> {
+    return this._http.post<HousesDto>(this._apiUrl + "/maisons", form);
   }
-  getMaisonsDetail(form: MaisonsDetailDto): Observable<MaisonsDetailDto> {
-    return this._http.post<MaisonsDetailDto>(this._apiUrl + "/maisons-detail", form);
+  getHousesDetail(form: HousesDetailDto): Observable<HousesDetailDto> {
+    return this._http.post<HousesDetailDto>(this._apiUrl + "/maisons-detail", form);
   }
 
   getUser(): UserDto | undefined {

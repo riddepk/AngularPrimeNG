@@ -5,7 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TableModule} from 'primeng/table';
 import {CommonModule} from '@angular/common';
 import {MaisonsDetailservices} from '../../../../services/maisons-detailservices';
-import {MaisonsDetailDto} from '../../models/maisons-detail-dto';
+import {HousesDetailDto} from '../../models/houses-detail-dto';
 
 @Component({
   selector: 'app-maisons-detail',
@@ -15,8 +15,8 @@ import {MaisonsDetailDto} from '../../models/maisons-detail-dto';
     TableModule,
     CommonModule
   ],
-  templateUrl: './houses-detail.html',
-  styleUrl: './houses-detail.css'
+  templateUrl: './maisons-detail.html',
+  styleUrl: './maisons-detail.css'
 })
 
 export class MaisonsDetail implements OnInit {
@@ -24,7 +24,7 @@ export class MaisonsDetail implements OnInit {
   private readonly maisonsDetailService:MaisonsDetailservices = inject(MaisonsDetailservices);
 
   constructor(private route: ActivatedRoute) { }
-  maisonsdetail:MaisonsDetailDto[]=[];
+  maisonsdetail:HousesDetailDto[]=[];
 
   ip!:string;
   username?:string;
@@ -34,7 +34,7 @@ export class MaisonsDetail implements OnInit {
     console.log('Nom sélectionné :', this.username);
     this.getIpAddress();
     console.log('Adresse IP :', this.ip);
-    const allMaisons = this.maisonsDetailService.initializerTableauMaisonsDetail();
+    const allMaisons = this.maisonsDetailService.initializerTableauHousesDetail();
     console.log(allMaisons);
     console.log(this.username);
     this.maisonsdetail= allMaisons.filter(m =>m.username === this.username);
