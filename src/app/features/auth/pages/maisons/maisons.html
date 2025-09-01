@@ -6,6 +6,7 @@
       <th>IP</th>
       <th>User</th>
       <th>HomeStatus</th>
+      <th>HomeOwner</th>
     </tr>
   </ng-template>
   <ng-template #body let-maison>
@@ -22,6 +23,7 @@
         </i>
         {{ maison.homestatus }}
       </td>
+      <td>{{ maison.HouseOwner_Id }}</td>
       <td>
         <button pButton class="pi pi-eye p-button-sm p-button-text" (click)="voirDetails(maison.HouseName)" ></button>
         <button pButton class="pi pi-pencil p-button-sm p-button-text" (click)="onEdit(maison)" ></button>
