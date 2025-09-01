@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-microcontrollers',
   imports: [],
-  templateUrl: './microcontrollers.html',
-  styleUrl: './microcontrollers.css'
+  templateUrl: './microdevices.html',
+  styleUrl: './microdevices.css'
 })
 export class Microcontrollers {
 

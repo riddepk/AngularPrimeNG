@@ -18,8 +18,8 @@ import { CommonModule } from '@angular/common';
     TableModule,
     CommonModule
   ],
-  templateUrl: './maisons.html',
-  styleUrl: './maisons.css'
+  templateUrl: './houses.html',
+  styleUrl: './houses.css'
 })
 
 

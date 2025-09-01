@@ -15,8 +15,8 @@ import {MaisonsDetailDto} from '../../models/maisons-detail-dto';
     TableModule,
     CommonModule
   ],
-  templateUrl: './maisons-detail.html',
-  styleUrl: './maisons-detail.css'
+  templateUrl: './houses-detail.html',
+  styleUrl: './houses-detail.css'
 })
 
 export class MaisonsDetail implements OnInit {
