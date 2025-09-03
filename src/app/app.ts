@@ -13,4 +13,6 @@ import { Footer } from "./layout/pages/footer/footer";
 })
 export class App {
   protected readonly title = signal('testPrimeNG01');
+
 }
+

@@ -4,6 +4,8 @@ import Aura from '@primeuix/themes/aura'
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { providePrimeNG } from 'primeng/config';
+import {DialogService} from 'primeng/dynamicdialog';
+import {MessageService} from 'primeng/api';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,6 +17,8 @@ export const appConfig: ApplicationConfig = {
       theme:{
         preset:Aura
       }
-    })
+    }),
+    MessageService,
+    DialogService,
   ]
 };

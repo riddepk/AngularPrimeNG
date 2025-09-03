@@ -39,6 +39,7 @@ export class AuthService {
   getMaisons(form: HousesDto): Observable<HousesDto> {
     return this._http.post<HousesDto>(this._apiUrl + "/maisons", form);
   }
+
   getHousesDetail(form: HousesDetailDto): Observable<HousesDetailDto> {
     return this._http.post<HousesDetailDto>(this._apiUrl + "/maisons-detail", form);
   }
@@ -50,5 +51,9 @@ export class AuthService {
   logout() {
     this.currentUser.set(undefined);
     localStorage.removeItem("currentUser");
+  }
+
+  addHouse(form: HousesDto): Observable<HousesDto> {
+    return this._http.post<HousesDto>(this._apiUrl + "/House", form);
   }
 }

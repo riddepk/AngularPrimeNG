@@ -6,3 +6,15 @@
   margin: 0;
   box-sizing: border-box;
 }
+.text-green-500 {
+  color: green;
+}
+
+.text-red-500 {
+  color: red;
+}
+
+h1,h2{
+  text-align: center;
+  color:blue;
+}

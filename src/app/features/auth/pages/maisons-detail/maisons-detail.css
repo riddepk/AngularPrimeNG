@@ -1,6 +1,8 @@
 *{
   color:darkblue;
 }
-h1{
-  text-align: center;
+
+.pbutton{
+    display: flex;
+    align-items: center
 }

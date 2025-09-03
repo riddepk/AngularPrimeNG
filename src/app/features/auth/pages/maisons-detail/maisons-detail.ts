@@ -1,11 +1,12 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {AuthService} from '../../services/auth.service';
 import {Router,ActivatedRoute } from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TableModule} from 'primeng/table';
 import {CommonModule} from '@angular/common';
 import {MaisonsDetailservices} from '../../../../services/maisons-detailservices';
 import {HousesDetailDto} from '../../models/houses-detail-dto';
+import { Button } from "primeng/button";
+import { HousesDto } from '../../models/houses-dto';
 
 @Component({
   selector: 'app-maisons-detail',
@@ -13,15 +14,19 @@ import {HousesDetailDto} from '../../models/houses-detail-dto';
     FormsModule,
     ReactiveFormsModule,
     TableModule,
-    CommonModule
-  ],
+    CommonModule,
+    Button
+],
   templateUrl: './maisons-detail.html',
   styleUrl: './maisons-detail.css'
 })
 
 export class MaisonsDetail implements OnInit {
   //private readonly authService: AuthService = inject(AuthService);
-  private readonly maisonsDetailService:MaisonsDetailservices = inject(MaisonsDetailservices);
+   private readonly _router: Router = inject(Router);
+   private readonly maisonsDetailService:MaisonsDetailservices = inject(MaisonsDetailservices);
+   helpOpen!: boolean;
+
 
   constructor(private route: ActivatedRoute) { }
   maisonsdetail:HousesDetailDto[]=[];
@@ -33,16 +38,26 @@ export class MaisonsDetail implements OnInit {
     this.username = this.route.snapshot.paramMap.get('username')!;
     console.log('Nom sélectionné :', this.username);
     // ---------------------------------------- recuperer l'IP de la maison
-    const allMaisons = this.maisonsDetailService.initializerTableauHousesDetail();
-    const maisonCorrespondante = allMaisons.find(m =>m.username=== this.username);
+    const allMaisonsDetail = this.maisonsDetailService.initializerTableauHousesDetail();
+    const maisonCorrespondante = allMaisonsDetail.find(m =>m.username=== this.username);
     if(maisonCorrespondante){
       this.ip = maisonCorrespondante.ip;
           console.log('Adresse IP récupérée depuis le tableau :', this.ip);
      } else {
        console.warn('Aucune maison trouvée pour ce username.');
     }
-    console.log(allMaisons);
-    console.log(this.username);
-    this.maisonsdetail= allMaisons.filter(m =>m.username === this.username);
+    console.log("Toutes les maisons");
+    console.log("==================");
+    console.log(allMaisonsDetail);
+    console.log("Le proprietaire est => "+this.username);
+    this.maisonsdetail= allMaisonsDetail.filter(m =>m.username === this.username);
+    console.log(this.maisonsdetail);
   }
+// ========================= Methodes utilisees
+    onCreate() {
+      console.log('Creér: Creation d\'une nouvelle maison');
+       this._router.navigate(['./create-house']);
+      // Redirection vers formulaire ou inline Creation
+      return;
+    }
 }

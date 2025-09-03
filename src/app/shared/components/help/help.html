@@ -1,0 +1,8 @@
+@if(visible()) {
+    <div class="overlay">
+        <div class="dialog">
+            <i class="pi pi-times" (click)="onClose.emit()"></i>
+            <ng-content></ng-content>
+        </div>
+    </div>
+}

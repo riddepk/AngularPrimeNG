@@ -36,12 +36,13 @@ export class Maisons implements OnInit{
   ngOnInit() : void{
     console.log(this.maisons);
     this.maisons =this.maisonService.initializerTableauMaisonnettes();
+
   }
   voirDetails(username:string) {
     this._router.navigate(['/maisons-detail',username]);
   }
 
-  onEdit(maison: HousesDto) {
+   onEdit(maison: HousesDto) {
     console.log('Éditer:', maison);
     // Redirection vers formulaire ou inline editing
   }

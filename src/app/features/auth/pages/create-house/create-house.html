@@ -1,0 +1,21 @@
+<h1>create-house works!</h1>
+<br>
+<form [formGroup]="createHouseForm" (ngSubmit)="submit()" (keydown.enter)="submit()">
+<p-floatlabel>
+    <label for="houseowner">Owner : </label>
+    <input pInputText id="houseowner" formControlName="name" autocomplete="off" />
+
+    <br>
+  <!-- pour les tests connexion sur api khun
+    <label for="houseip">Owner : </label>
+    <input pInputText id="houseip" formControlName="houseip" autocomplete="off" />
+-->
+</p-floatlabel>
+</form>
+<br>
+<form [formGroup]="createHouseForm" (ngSubmit)="submit()">
+  <!-- ------------- champs du formulaire ---------------------->
+  <p-button type="submit" >Ajouter une nouvelle maison</p-button>
+</form>
+<!-- -->
+
