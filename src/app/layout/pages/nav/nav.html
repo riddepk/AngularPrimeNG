@@ -1,4 +1,9 @@
-<p-button routerLink="/maisons" severity="danger" label="maisons" icon="pi pi-home"></p-button>
+<div style="text-align: left;">
+  <p-buttongroup>
+    <p-button class="pbutton" label="Créer une maison" [raised]="true" severity="info" (click)="openPopup()" icon ="pi pi-plus"/>
+    <p-button routerLink="/maisons" severity="info" label="Liste de maisons" icon="pi pi-home"></p-button>
+  </p-buttongroup>
+</div>
 @if (currentUser()){
   <p-buttongroup>
         <p-button (click)="logout()" severity="danger" label="Logout" icon="pi pi-sign-out"></p-button>

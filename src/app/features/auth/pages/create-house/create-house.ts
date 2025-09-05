@@ -5,7 +5,6 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Button } from "primeng/button";
-import {HousesDto} from '../../models/houses-dto';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../../../environments/environment';
 
@@ -34,14 +33,6 @@ createHouseForm = new FormGroup({
   }
   //-------------------------------------
 submit() {
-  // if (this.createHouseForm.valid) {
-  //   const formData = this.createHouseForm.value;
-  //   console.log('Données du formulaire :', formData);
-  //   // mettre ici l'appel à mon service  pour creer la maison
-  //   } else {
-  //       console.warn('Formulaire invalide');
-  //       this.createHouseForm.markAllAsTouched();
-  //   }
   this._http.post(environment.API_URL + '/house', this.createHouseForm.value, {
     headers: { Authorization: 'Bearer ' + this._authService.currentUser()?.token }
   }).subscribe();

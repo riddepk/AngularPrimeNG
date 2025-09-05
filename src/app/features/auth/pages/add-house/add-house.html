@@ -1,13 +1,19 @@
-<h2 mat-dialog-title>Formulaire</h2>
+<h2 mat-dialog-title>Add House</h2>
+
 <mat-dialog-content>
-  <mat-form-field>
-    <input matInput placeholder="Nom" [(ngModel)]="nom">
+  <mat-form-field appearance="fill">
+    <input matInput placeholder="Name" [(ngModel)]="name">
   </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Email" [(ngModel)]="email">
-  </mat-form-field>
+  <br>
+<!--  <mat-form-field appearance="fill">-->
+<!--    <input matInput placeholder="Email" [(ngModel)]="email">-->
+<!--  </mat-form-field>-->
 </mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button (click)="close()">Annuler</button>
-  <button mat-button (click)="submit()">Envoyer</button>
-</mat-dialog-actions>
+<div style="text-align: right;">
+  <p-buttongroup>
+    <mat-dialog-actions align="end">
+      <p-button class="pbutton" label="Cancel" [raised]="true" severity="danger" (click)="close()" />
+      <p-button class="pbutton" label="Submit" [raised]="true" severity="info" (click)="submit()" />
+    </mat-dialog-actions>
+  </p-buttongroup>
+</div>

@@ -1,5 +1,6 @@
 export interface MicrodeviceDto {
   DeviceId:number;
+  // DeviceDate:date;
   DeviceOwnerId:number;
   DeviceNumericValue:number;
   DeviceAnalogicValue: boolean;
@@ -9,6 +10,7 @@ export interface MicrodeviceDto {
 
 export interface MicroDeviceForm {
   DeviceId:number;
+  // DeviceDate:date;
   DeviceNumericValue:number;
   DeviceAnalogicValue: boolean;
   DeviceCategoryId:number;
@@ -23,15 +25,17 @@ export interface DeviceCategory{
 export class MicroDevice {
 
   constructor(
-                _id : number 
-              , _deviceownerid : number 
+                _id : number
+                // _devicedate:date
+              , _deviceownerid : number
               , _devicenumericvalue  : number
-              , _deviceanalogicvalue : boolean 
+              , _deviceanalogicvalue : boolean
               , _devicecategoryid:number
               , _devicename:string
             )
     {
     this.deviceid = _id;
+    // this.devicedate=_devicedate
     this.deviceownerid = _deviceownerid ;
     this.devicenumericvalue = _devicenumericvalue;
     this.deviceanalogicvalue=_deviceanalogicvalue;
@@ -40,6 +44,7 @@ export class MicroDevice {
 
 
   deviceid: number;
+  // devicedate:date;
   deviceownerid : number ;
   devicenumericvalue: number;
   deviceanalogicvalue : boolean;

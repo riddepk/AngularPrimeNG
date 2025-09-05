@@ -1,13 +1,13 @@
 <h1>create-house works!</h1>
 <br>
-<form [formGroup]="createHouseForm" (ngSubmit)="submit()" (keydown.enter)="submit()">
+<form [formGroup]="createHouseForm" (ngSubmit)="submit()" (keydown.enter)="submit()" >
 <p-floatlabel>
-    <label for="houseowner">Owner : </label>
+    <label for="houseowner">Nouvelle Maison : </label>
     <input pInputText id="houseowner" formControlName="name" autocomplete="off" />
 
     <br>
   <!-- pour les tests connexion sur api khun
-    <label for="houseip">Owner : </label>
+    <label for="houseip">IP Maison : </label>
     <input pInputText id="houseip" formControlName="houseip" autocomplete="off" />
 -->
 </p-floatlabel>
