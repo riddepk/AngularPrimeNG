@@ -1,7 +1,8 @@
 <div style="text-align: left;">
   <p-buttongroup>
-    <p-button class="pbutton" label="Créer une maison" [raised]="true" severity="info" (click)="openPopup()" icon ="pi pi-plus"/>
-    <p-button routerLink="/maisons" severity="info" label="Liste de maisons" icon="pi pi-home"></p-button>
+    <p-button class="pbutton" label="Manage Devices" [raised]="true" severity="info" (click)="gestionDevices()" icon ="pi pi-plus"/>
+    <p-button class="pbutton" label="Add House" [raised]="true" severity="info" (click)="openPopup()" icon ="pi pi-plus"/>
+    <p-button routerLink="/maisons" severity="info" label="List of houses" icon="pi pi-home"></p-button>
   </p-buttongroup>
 </div>
 @if (currentUser()){

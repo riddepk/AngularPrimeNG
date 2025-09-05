@@ -2,13 +2,14 @@ import { Component, inject } from '@angular/core';
 import {MatDialogActions, MatDialogContent, MatDialogRef} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {FormBuilder, FormControl, FormGroup, FormsModule, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Button} from 'primeng/button';
 import { ButtonGroup } from "primeng/buttongroup";
 import { environment } from '../../../../../environments/environment.development';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import {FloatLabel} from 'primeng/floatlabel';
 
 @Component({
   selector: 'app-addhouse',
@@ -19,7 +20,9 @@ import { HttpClient } from '@angular/common/http';
     MatInputModule,
     FormsModule,
     Button,
-    ButtonGroup
+    ButtonGroup,
+    FormsModule,
+    ReactiveFormsModule,
 ],
   templateUrl: './add-house.html'
 })
@@ -44,7 +47,7 @@ export class AddHouse {
   }
 
   submit() {
-    console.log(this.addHouseForm.value);
+    console.log('=============>'+this.addHouseForm.value+'<========================');
     this._http.post(environment.API_URL + '/house', this.addHouseForm.value, {
       headers: { Authorization: 'Bearer ' + this._authService.currentUser()?.token }
     }).subscribe();
@@ -54,6 +57,9 @@ export class AddHouse {
     console.log('Creér: Creation d\'une nouvelle maison');
     this._router.navigate(['./add-house']);
     //this._router.navigate(['./create-house']);
+    return;
+  }
+  gestionDevices(){
     return;
   }
 }

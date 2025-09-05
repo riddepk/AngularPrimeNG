@@ -33,6 +33,7 @@ createHouseForm = new FormGroup({
   }
   //-------------------------------------
 submit() {
+  console.log('=============>'+this.createHouseForm.value+'<========================');
   this._http.post(environment.API_URL + '/house', this.createHouseForm.value, {
     headers: { Authorization: 'Bearer ' + this._authService.currentUser()?.token }
   }).subscribe();

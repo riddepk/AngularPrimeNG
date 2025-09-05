@@ -1,8 +1,9 @@
 <h2 mat-dialog-title>Add House</h2>
+<form [formGroup]="addHouseForm">
 
 <mat-dialog-content>
   <mat-form-field appearance="fill">
-    <input matInput placeholder="Name" [(ngModel)]="name">
+    <input matInput placeholder="Name" formControlName="name">
   </mat-form-field>
   <br>
 <!--  <mat-form-field appearance="fill">-->
@@ -17,3 +18,4 @@
     </mat-dialog-actions>
   </p-buttongroup>
 </div>
+</form>

@@ -34,7 +34,7 @@ export class Nav {
     this._router.navigate(['/']);
   }
 
-
+  // ------------------------- openPopup()
   openPopup() {
     const dialogRef = this.dialog.open(AddHouse);
     dialogRef.afterClosed().subscribe((result: any) => {
@@ -43,5 +43,8 @@ export class Nav {
       }
     });
   }
+// ------------------------- gestionDevices()
+  gestionDevices() {
 
+  }
 }
