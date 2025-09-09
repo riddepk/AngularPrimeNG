@@ -6,10 +6,16 @@
     <input matInput placeholder="Name" formControlName="name">
   </mat-form-field>
   <br>
-<!--  <mat-form-field appearance="fill">-->
-<!--    <input matInput placeholder="Email" [(ngModel)]="email">-->
-<!--  </mat-form-field>-->
+ <mat-form-field appearance="fill">
+   <input matInput placeholder="IPV4" formControlName="ipv4">
+ </mat-form-field>
+<br>
+  <div class="flex items-center" appearance="fill">
+      <p-checkbox inputId="isactive" name="isactive"value="isactive" formControlName="isactive" />
+      <label for="isactive" class="ml-2"> IsActive </label>
+  </div>
 </mat-dialog-content>
+<br>
 <div style="text-align: right;">
   <p-buttongroup>
     <mat-dialog-actions align="end">
