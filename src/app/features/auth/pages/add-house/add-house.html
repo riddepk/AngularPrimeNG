@@ -11,7 +11,7 @@
  </mat-form-field>
 <br>
   <div class="flex items-center" appearance="fill">
-      <p-checkbox inputId="isactive" name="isactive"value="isactive" formControlName="isactive" />
+      <p-checkbox inputId="isactive" name="isactive" [binary]="addHouseForm.controls['isactive'].value" formControlName="isactive" />
       <label for="isactive" class="ml-2"> IsActive </label>
   </div>
 </mat-dialog-content>
