@@ -7,6 +7,7 @@
       <th>User</th>
       <th>HomeStatus</th>
       <th>HomeOwner</th>
+      <th></th>
     </tr>
   </ng-template>
   <ng-template #body let-maison>
@@ -28,6 +29,7 @@
         <button pButton class="pi pi-eye p-button-sm p-button-text" (click)="voirDetails(maison.HouseName)" ></button>
         <button pButton class="pi pi-pencil p-button-sm p-button-text" (click)="onEdit(maison)" ></button>
         <button pButton class="pi pi-trash p-button-sm p-button-danger" (click)="onDelete(maison)" ></button>
+        <button pButton class="pi pi-wrench p-button-sm p-button-secondary" (click)="onDelete(maison)" ></button>
       </td>
     </tr>
   </ng-template>

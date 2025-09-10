@@ -50,12 +50,7 @@ addHouseForm = this._fb.group({
   }
 
   submit() {
-    if (this.addHouseForm.invalid) {
-            console.warn('Formulaire invalide');
-      return;
-    }
-
-    this.addHouseForm.markAllAsTouched();
+        this.addHouseForm.markAllAsTouched();
     console.log('=============>'+this.addHouseForm.value+'<========================');
     this._http.post(environment.API_URL + '/House', this.addHouseForm.value, {
       headers: { Authorization: 'Bearer ' + this._authService.currentUser()?.token }
