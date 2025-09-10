@@ -56,4 +56,9 @@ export class AuthService {
   addHouse(form: HousesDto): Observable<HousesDto> {
     return this._http.post<HousesDto>(this._apiUrl + "/House", form);
   }
+
+listUsers(): Observable<UserDto[]> {
+  return this._http.get<UserDto[]>(this._apiUrl + "/User");
+}
+
 }

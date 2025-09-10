@@ -40,4 +40,9 @@ export const routes: Routes = [
     // Lazy loading du component (importe le component puis renvois l'instance à l'appel)
     loadComponent: () => import("./features/auth/pages/add-house/add-house").then(m => m.AddHouse),
   },
+  {
+  path: 'list-users',
+  // Lazy loading du component (importe le component puis renvois l'instance à l'appel)
+  loadComponent: () => import("./features/auth/pages/list-users/list-users").then(m => m.ListUsers),
+  },
 ];

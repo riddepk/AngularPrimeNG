@@ -38,8 +38,8 @@ export class AddHouse {
   isactive:boolean=false;
 
 addHouseForm = this._fb.group({
-    name: ['test', Validators.required],
-    ipv4: ['11.22.22.24', [Validators.required, Validators.minLength(10), Validators.maxLength(15)]],
+    name: ['Name', Validators.required],
+    ipv4: ['IP', [Validators.required, Validators.minLength(10), Validators.maxLength(15)]],
     isactive: [false, Validators.required]
   });
 
@@ -50,25 +50,28 @@ addHouseForm = this._fb.group({
   }
 
   submit() {
-        if (this.addHouseForm.invalid) {
+     if (this.addHouseForm.invalid) {
             console.warn('Formulaire invalide');
       return;
     }
     this.addHouseForm.markAllAsTouched();
-    console.log('=============>'+JSON.stringify(this.addHouseForm.value)+'<========================');
+    //console.log('=============>'+JSON.stringify(this.addHouseForm.value)+'<========================');
     let dataFromForm = {
       Name : this.addHouseForm.controls['name'].value,
       IPV4 : this.addHouseForm.controls['ipv4'].value,
       IsActive : this.addHouseForm.controls['isactive'].value,
     }
-    console.log('=============>'+JSON.stringify(dataFromForm)+'<========================');
+    //console.log('=============>'+JSON.stringify(dataFromForm)+'<========================');
     this._http.post(environment.API_URL + '/House', dataFromForm, {
       headers: { Authorization: 'Bearer ' + this._authService.currentUser()?.token }
     }).subscribe( {
       next : data => console.log(data),
       error : err => console.error(err)      
     });
+    // -------------------- fermeture popup
+    this.dialogRef.close();
    }
+
 
   createHouse() {
     console.log('Creér: Creation d\'une nouvelle maison');

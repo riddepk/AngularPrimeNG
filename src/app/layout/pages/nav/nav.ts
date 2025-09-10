@@ -6,6 +6,7 @@ import { AuthService } from '../../../features/auth/services/auth.service';
 import { UserTokenDto } from '../../../features/auth/models/user-dto';
 import {AddHouse} from '../../../features/auth/pages/add-house/add-house';
 import {MatDialog} from '@angular/material/dialog';
+import { ListUsers } from '../../../features/auth/pages/list-users/list-users';
 
 @Component({
   selector: 'app-nav',
@@ -35,8 +36,17 @@ export class Nav {
   }
 
   // ------------------------- openPopup()
-  openPopup() {
+  openPopupHouse() {
     const dialogRef = this.dialog.open(AddHouse);
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        console.log('Données reçues:', result);
+      }
+    });
+  }
+
+  openPopupUser() {
+    const dialogRef = this.dialog.open(ListUsers);
     dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
         console.log('Données reçues:', result);
