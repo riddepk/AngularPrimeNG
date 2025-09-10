@@ -2,14 +2,14 @@ import { Component, inject } from '@angular/core';
 import {MatDialogActions, MatDialogContent, MatDialogRef} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Button} from 'primeng/button';
 import { ButtonGroup } from "primeng/buttongroup";
 import { environment } from '../../../../../environments/environment.development';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import {FloatLabel} from 'primeng/floatlabel';
+import { CheckboxModule } from 'primeng/checkbox';
 
 @Component({
   selector: 'app-addhouse',
@@ -23,6 +23,7 @@ import {FloatLabel} from 'primeng/floatlabel';
     ButtonGroup,
     FormsModule,
     ReactiveFormsModule,
+    CheckboxModule
 ],
   templateUrl: './add-house.html'
 })
@@ -33,12 +34,14 @@ export class AddHouse {
   private readonly _http = inject(HttpClient);
 
   name: string = '';
-  email: string = '';
+  ipv4: string = '';
+  isactive:boolean=false;
 
-  addHouseForm = new FormGroup({
-  name: new FormControl(null, [Validators.required]),
- // houseip: new FormControl(null, [Validators.required]),
-});
+addHouseForm = this._fb.group({
+    name: ['', Validators.required],
+    ipv4: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(15)]],
+    isactive: [false, Validators.required]
+  });
 
   constructor(private dialogRef: MatDialogRef<AddHouse>) {}
 
@@ -47,8 +50,14 @@ export class AddHouse {
   }
 
   submit() {
+    if (this.addHouseForm.invalid) {
+            console.warn('Formulaire invalide');
+      return;
+    }
+
+    this.addHouseForm.markAllAsTouched();
     console.log('=============>'+this.addHouseForm.value+'<========================');
-    this._http.post(environment.API_URL + '/house', this.addHouseForm.value, {
+    this._http.post(environment.API_URL + '/House', this.addHouseForm.value, {
       headers: { Authorization: 'Bearer ' + this._authService.currentUser()?.token }
     }).subscribe();
    }

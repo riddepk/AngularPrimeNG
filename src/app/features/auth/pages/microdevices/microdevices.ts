@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-microcontrollers',
+  selector: 'app-microdevices',
   imports: [],
   templateUrl: './microdevices.html',
   styleUrl: './microdevices.css'

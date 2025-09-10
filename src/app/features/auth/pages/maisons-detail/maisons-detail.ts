@@ -5,7 +5,6 @@ import {TableModule} from 'primeng/table';
 import {CommonModule} from '@angular/common';
 import {MaisonsDetailservices} from '../../../../services/maisons-detailservices';
 import {HousesDetailDto} from '../../models/houses-detail-dto';
-import { Button } from "primeng/button";
 import { HousesDto } from '../../models/houses-dto';
 import { MatDialog } from '@angular/material/dialog';
 import { AddHouse } from '../add-house/add-house';
@@ -17,7 +16,6 @@ import { AddHouse } from '../add-house/add-house';
     ReactiveFormsModule,
     TableModule,
     CommonModule,
-    Button
 ],
   templateUrl: './maisons-detail.html',
   styleUrl: './maisons-detail.css'
