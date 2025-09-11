@@ -1,44 +1,50 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { MatDialogRef} from '@angular/material/dialog';
+import { MatDialogRef, MatDialogActions } from '@angular/material/dialog';
 import { MatInputModule } from "@angular/material/input";
 import { ButtonGroup } from "primeng/buttongroup";
 import { Button } from "primeng/button";
 import { UserDto } from '../../models/user-dto';
 import { TableModule } from "primeng/table";
+import { environment } from '../../../../../environments/environment.development';
 
 
 @Component({
   selector: 'app-list-users',
-  imports: [MatInputModule, ReactiveFormsModule, TableModule],
+  imports: [MatInputModule, ReactiveFormsModule, TableModule, Button, MatDialogActions],
   templateUrl: './list-users.html',
   styleUrl: './list-users.css'
 })
-export class ListUsers {
+export class ListUsers implements OnInit {
   private readonly _authService: AuthService = inject(AuthService);
-  private readonly _fb: FormBuilder = inject(FormBuilder);
   private readonly _router: Router = inject(Router);
   private readonly _http = inject(HttpClient);
-  
+
   listuser: UserDto[] = [];
-  
-  id:number=0;
+
+  id: number = 0;
   role: string = '';
   username: string = '';
 
-listUsersForm = this._fb.group({
-    id:['',[]],
-    username: ['Name', []],
-    role: ['role', []],
-  });
 
-  constructor(private dialogRef: MatDialogRef<ListUsers>) {}
+  constructor(private dialogRef: MatDialogRef<ListUsers>) { }
 
-   close() {
+  close() {
     this.dialogRef.close();
   }
 
+  ngOnInit() {
+    this._http.get<UserDto[]>(environment.API_URL + '/House/User').subscribe({
+      next: data => {
+        this.listuser = data;
+        console.log(data);
+
+      },
+      error: err => console.error(err)
+    });
+
+  }
 }

@@ -1,5 +1,8 @@
-<div class="card">
-    <p-table [value]="listuser" [tableStyle]="{ 'min-width': '50rem' }">
+<br>
+<h2>List of Users</h2>
+<br><br>
+<div >
+    <p-table [value]="listuser" [tableStyle]="{ 'min-width': '50%' }">
         <ng-template #header>
             <tr>
                 <th>ID</th>
@@ -7,12 +10,15 @@
                 <th>Role</th>
             </tr>
         </ng-template>
-        <ng-template #body let-listuser>
+        <ng-template #body let-user>
             <tr>
-                <td>{{ listuser.id }}</td>
-                <td>{{ listuser.name }}</td>
-                <td>{{ listuser.category }}</td>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.role }}</td>
             </tr>
         </ng-template>
     </p-table>
+    <mat-dialog-actions align="center" >
+     <p-button class="pbutton" label="Close" [raised]="true" severity="danger" (click)="close()" />
+    </mat-dialog-actions>
 </div>

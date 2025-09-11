@@ -6,6 +6,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { providePrimeNG } from 'primeng/config';
 import {DialogService} from 'primeng/dynamicdialog';
 import {MessageService} from 'primeng/api';
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,5 +20,5 @@ export const appConfig: ApplicationConfig = {
       }
     }),
     MessageService,
-    DialogService,
+    DialogService, provideCharts(withDefaultRegisterables()),
 ]}
