@@ -10,6 +10,7 @@ import { Button } from "primeng/button";
 import { UserDto } from '../../models/user-dto';
 import { TableModule } from "primeng/table";
 import { environment } from '../../../../../environments/environment.development';
+import { UserServices } from '../../../../services/user.services';
 
 
 @Component({
@@ -19,7 +20,7 @@ import { environment } from '../../../../../environments/environment.development
   styleUrl: './list-users.css'
 })
 export class ListUsers implements OnInit {
-  private readonly _authService: AuthService = inject(AuthService);
+  private readonly _authservice: AuthService = inject(AuthService);
   private readonly _router: Router = inject(Router);
   private readonly _http = inject(HttpClient);
 
@@ -37,7 +38,7 @@ export class ListUsers implements OnInit {
   }
 
   ngOnInit() {
-    this._http.get<UserDto[]>(environment.API_URL + '/House/User').subscribe({
+    this._http.get<UserDto[]>(environment.API_URL + '/User/LstAll').subscribe({
       next: data => {
         this.listuser = data;
         console.log(data);
