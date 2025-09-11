@@ -39,7 +39,7 @@ export class AddHouse {
 
 addHouseForm = this._fb.group({
     name: ['Name', Validators.required],
-    ipv4: ['IP', [Validators.required, Validators.minLength(10), Validators.maxLength(15)]],
+    ipv4: ['IP', [Validators.required, Validators.minLength(7), Validators.maxLength(15)]],
     isactive: [false, Validators.required]
   });
 
@@ -66,7 +66,7 @@ addHouseForm = this._fb.group({
       headers: { Authorization: 'Bearer ' + this._authService.currentUser()?.token }
     }).subscribe( {
       next : data => console.log(data),
-      error : err => console.error(err)      
+      error : err => console.error(err)
     });
     // -------------------- fermeture popup
     this.dialogRef.close();
