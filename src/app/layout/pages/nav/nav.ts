@@ -1,12 +1,13 @@
-import {Component, inject, Signal} from '@angular/core';
+import {Component, ElementRef, inject, Signal, ViewChild} from '@angular/core';
 import {Button} from 'primeng/button';
 import {ButtonGroup} from 'primeng/buttongroup';
 import {Router, RouterLink} from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
 import { AuthService } from '../../../features/auth/services/auth.service';
 import { UserTokenDto } from '../../../features/auth/models/user-dto';
 import {AddHouse} from '../../../features/auth/pages/add-house/add-house';
-import {MatDialog} from '@angular/material/dialog';
 import { ListUsers } from '../../../features/auth/pages/list-users/list-users';
+import { Maisons } from '../../../features/auth/pages/maisons/maisons';
 
 @Component({
   selector: 'app-nav',
@@ -34,8 +35,8 @@ export class Nav {
     this._authService.logout();
     this._router.navigate(['/']);
   }
-
-  // ------------------------- openPopup()
+  // ----------------------------------------------------
+  // ---------------------------------------- openPopup()
   openPopupHouse() {
     const dialogRef = this.dialog.open(AddHouse);
     dialogRef.afterClosed().subscribe((result: any) => {
@@ -53,6 +54,25 @@ export class Nav {
       }
     });
   }
+
+@ViewChild('tableRef') tableRef!: ElementRef;
+openPopupListHouses(): void {
+  const minWidth = 600;
+  const tableWidth = this.tableRef?.nativeElement?.offsetWidth || minWidth;
+
+  const dialogRef = this.dialog.open(Maisons, {
+    width: `${Math.max(tableWidth, minWidth)}px`,
+    maxWidth: 'none',
+    data: { }
+  });
+
+  dialogRef.afterClosed().subscribe((result: any) => {
+    if (result) {
+      console.log('Données reçues:', result);
+    }
+  });
+}
+
 // ------------------------- gestionDevices()
   gestionDevices() {
 

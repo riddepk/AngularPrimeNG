@@ -6,3 +6,15 @@
     display: flex;
     align-items: center
 }
+nb-progress-bar ~ nb-progress-bar {
+  margin-top: 1rem;
+}
+
+.control-status-example {
+  margin-top: 1rem;
+}
+ .bordure{
+  border-width: 3px;
+  border-color: blue;
+  border-radius: 15%;
+ }

@@ -1,13 +1,17 @@
+import { HousesDetailDto ,HousesDetail} from './../../models/houses-detail-dto';
 import {Component, inject, OnInit} from '@angular/core';
 import {Router,ActivatedRoute } from '@angular/router';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {TableModule} from 'primeng/table';
+import { ProgressBar } from 'primeng/progressbar';
 import {CommonModule} from '@angular/common';
 import {MaisonsDetailservices} from '../../../../services/maisons-detailservices';
-import {HousesDetailDto} from '../../models/houses-detail-dto';
-import { HousesDto } from '../../models/houses-dto';
 import { MatDialog } from '@angular/material/dialog';
-import { AddHouse } from '../add-house/add-house';
+import { HttpClient } from '@angular/common/http';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { environment } from '../../../../../environments/environment.development';
+
+
 
 @Component({
   selector: 'app-maisons-detail',
@@ -16,26 +20,36 @@ import { AddHouse } from '../add-house/add-house';
     ReactiveFormsModule,
     TableModule,
     CommonModule,
+    ToastrModule,
 ],
   templateUrl: './maisons-detail.html',
   styleUrl: './maisons-detail.css'
 })
 
 export class MaisonsDetail implements OnInit {
-  //private readonly authService: AuthService = inject(AuthService);
+  private readonly  _httpClient  = inject(HttpClient);
+  private readonly  _formBuilder = inject(FormBuilder);
+  private readonly  _toastrService = inject(ToastrService);
+
   private readonly _router: Router = inject(Router);
   private readonly maisonsDetailService: MaisonsDetailservices = inject(MaisonsDetailservices);
   helpOpen!: boolean;
+  housesDetail!: HousesDetail;
 
 
   constructor(private route: ActivatedRoute, private dialog: MatDialog) {
   }
 
   maisonsdetail: HousesDetailDto[] = [];
-
+  houseDetailForm= this._formBuilder.group({
+    temperature:[null,[Validators.required,Validators.max(60),Validators.min(-100)]],   // contraintes pour la temperature
+    humidity:[null,[Validators.required,Validators.max(100),Validators.min(0)]],        // contraintes pour l'humidité
+  });
   ip!: string;
   username?: string;
-
+//**********************************************************
+//  cette fonction s'active
+//******************************************************* */
   ngOnInit(): void {
     this.username = this.route.snapshot.paramMap.get('username')!;
     console.log('Nom sélectionné :', this.username);
@@ -56,7 +70,7 @@ export class MaisonsDetail implements OnInit {
     console.log(this.maisonsdetail);
   }
 
-// ========================= Methodes utilisees
+// ======================================================== Methodes utilisees
   onCreate() {
     console.log('Creér: Creation d\'une nouvelle maison');
     //this._router.navigate(['./addhouse']);
@@ -64,5 +78,32 @@ export class MaisonsDetail implements OnInit {
     // Redirection vers formulaire ou inline Creation
     return;
   }
+
+// ------------------------------------------------------------------------------
+//                    getFieldErrors
+// ------------------------------------------------------------------------------
+getFieldErrors(controlName: string): string[] {
+  const control = this.houseDetailForm.get(controlName);
+  if (!control || !control.errors || !(control.touched || control.dirty)) {
+    return [];
+  }
+
+  const messages: string[] = [];
+
+  if (control.hasError('required')) {
+    messages.push(`${controlName} is required`);
+  }
+  if (control.hasError('minlength')) {
+    const requiredLength = control.getError('minlength').requiredLength;
+    messages.push(`${controlName} must be at least ${requiredLength} characters long`);
+  }
+  if (control.hasError('maxlength')) {
+    const maxLength = control.getError('maxlength').requiredLength;
+    messages.push(`${controlName} may have at most ${maxLength} characters`);
+  }
+
+  return messages;
+}
+
 
 }

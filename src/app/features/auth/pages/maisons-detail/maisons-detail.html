@@ -2,3 +2,42 @@
 <br>
 <h2>IP est {{ip}}</h2>
 <br>
+<form>
+  <div>
+
+  </div>
+  <aside>
+
+<!-- ------------------  Gestion des temperatures / Humiditee ----------->
+<form [formGroup]="houseDetailForm" >
+  <div class="bordure">
+    <label>Temperature</label>
+    <input formControlName="temperature" name="temperature" type="number">
+        <!-- ================ Verif si il y a des erreurs TEMPERATURE ==================-->
+    @if (getFieldErrors('temperature').length > 0) {
+      <div class="alert">
+        @for (error of getFieldErrors('temperature'); track error) {
+          <div>{{ error }}</div>
+        }
+     </div>
+    }
+  </div>
+
+  <div>
+    <label>Humidité</label>
+    <input formControlName="humidity" name="humidity" type="number">
+        <!-- ================ Verif si il y a des erreurs HUMIDITY ==================-->
+    @if (getFieldErrors('humidity').length > 0) {
+      <div class="alert">
+        @for (error of getFieldErrors('humidity'); track error) {
+          <div>{{ error }}</div>
+        }
+     </div>
+    }
+  </div>
+  <button>Sauvegarder</button>
+</form>
+
+  </aside>
+
+</form>
