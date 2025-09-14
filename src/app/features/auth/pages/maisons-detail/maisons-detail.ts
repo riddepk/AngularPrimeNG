@@ -27,10 +27,10 @@ export class MaisonsDetail implements OnInit {
   private readonly  _httpClient  = inject(HttpClient);
   private readonly  _formBuilder = inject(FormBuilder);
   private readonly  _toastrService = inject(ToastrService);
-
   private readonly _router: Router = inject(Router);
   private readonly maisonsDetailService: MaisonsDetailservices = inject(MaisonsDetailservices);
   helpOpen!: boolean;
+
   housesDetail!: HousesDetail;
 
 
@@ -42,6 +42,7 @@ export class MaisonsDetail implements OnInit {
     temperature:[null,[Validators.required,Validators.max(60),Validators.min(-100)]],   // contraintes pour la temperature
     humidity:[null,[Validators.required,Validators.max(100),Validators.min(0)]],        // contraintes pour l'humidité
   });
+
   ip!: string;
   username?: string;
 //**********************************************************
