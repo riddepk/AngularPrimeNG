@@ -1,6 +1,6 @@
 
 <br>
-<h2>Maison Work!</h2>
+<h2>Liste of the Houses</h2>
 <br>
   <p-table [value]="maisons" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header">
@@ -29,7 +29,9 @@
         </td>
         <td>{{ maison.HouseOwner_Id }}</td>
         <td>
-          <button pButton class="pi pi-eye p-button-sm p-button-text" (click)="voirDetails(maison.HouseName)" ></button>
+          @if (maison.HouseOwner?.username) {
+          <button  pButton class="pi pi-eye p-button-sm p-button-text" (click)="voirDetails(maison.HouseOwner_Id,maison.HouseName )" ></button>
+          }
           <button pButton class="pi pi-pencil p-button-sm p-button-text" (click)="onEdit(maison)" ></button>
           <button pButton class="pi pi-trash p-button-sm p-button-danger" (click)="onDelete(maison)" ></button>
           <button pButton class="pi pi-wrench p-button-sm p-button-secondary" (click)="onDelete(maison)" ></button>

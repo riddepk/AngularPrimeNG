@@ -9,6 +9,7 @@ import {HousesDetailDto} from '../../models/houses-detail-dto';
 import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ButtonDirective } from "primeng/button";
+import { MaisonsDetail } from '../maisons-detail/maisons-detail';
 
 
 @Component({
@@ -35,7 +36,11 @@ export class Maisons implements OnInit{
   maisonsdetail:HousesDetailDto[]=[];
   currentUser: any;
 
-  constructor(private maisonService:Maisonservice,private router:Router,private dialogRef: MatDialogRef<Maisons>) {
+  constructor(private maisonService:Maisonservice
+             ,private router:Router
+             ,private dialogRef: MatDialogRef<Maisons>
+             ,private dialog: MatDialog
+            ) {
         this.currentUser = this._authService.currentUser;
   }
   // ------------------------ close popup
@@ -49,9 +54,15 @@ export class Maisons implements OnInit{
 
   }
 
-  voirDetails(username:string) {
-    this._router.navigate(['/maisons-detail',username]);
+voirDetails(username: string, HouseName: string) {
+  if (username) {
+    console.log(" detail username : " + username);
+    this._router.navigate(['/maisons-detail', username]);
+  } else {
+    console.warn("HouseOwner ou username est manquant pour cette maison", HouseName);
   }
+}
+
 
    onEdit(maison: HousesDto) {
     console.log('Éditer:', maison);

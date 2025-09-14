@@ -3,14 +3,11 @@ import {Component, inject, OnInit} from '@angular/core';
 import {Router,ActivatedRoute } from '@angular/router';
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {TableModule} from 'primeng/table';
-import { ProgressBar } from 'primeng/progressbar';
 import {CommonModule} from '@angular/common';
 import {MaisonsDetailservices} from '../../../../services/maisons-detailservices';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
-import { environment } from '../../../../../environments/environment.development';
-
 
 
 @Component({
@@ -50,25 +47,25 @@ export class MaisonsDetail implements OnInit {
 //**********************************************************
 //  cette fonction s'active
 //******************************************************* */
-  ngOnInit(): void {
-    this.username = this.route.snapshot.paramMap.get('username')!;
-    console.log('Nom sélectionné :', this.username);
-    // ---------------------------------------- recuperer l'IP de la maison
-    const allMaisonsDetail = this.maisonsDetailService.initializerTableauHousesDetail();
-    const maisonCorrespondante = allMaisonsDetail.find(m => m.username === this.username);
-    if (maisonCorrespondante) {
-      this.ip = maisonCorrespondante.ip;
-      console.log('Adresse IP récupérée depuis le tableau :', this.ip);
-    } else {
-      console.warn('Aucune maison trouvée pour ce username.');
-    }
-    console.log("Toutes les maisons");
-    console.log("==================");
-    console.log(allMaisonsDetail);
-    console.log("Le proprietaire est => " + this.username);
-    this.maisonsdetail = allMaisonsDetail.filter(m => m.username === this.username);
-    console.log(this.maisonsdetail);
-  }
+    ngOnInit(): void {
+      this.username = this.route.snapshot.paramMap.get('username')!;
+      console.log('Nom sélectionné :', this.username);
+  //   // ---------------------------------------- recuperer l'IP de la maison
+     const allMaisonsDetail = this.maisonsDetailService.initializerTableauHousesDetail();
+     const maisonCorrespondante = allMaisonsDetail.find(m => m.username === this.username);
+     if (maisonCorrespondante) {
+       this.ip = maisonCorrespondante.ip;
+       console.log('Adresse IP récupérée depuis le tableau :', this.ip);
+     } else {
+       console.warn('Aucune maison trouvée pour ce username.');
+     }
+     console.log("Toutes les maisons");
+     console.log("==================");
+     console.log(allMaisonsDetail);
+     console.log("Le proprietaire est => " + this.username);
+     this.maisonsdetail = allMaisonsDetail.filter(m => m.username === this.username);
+     console.log(this.maisonsdetail);
+   }
 
 // ======================================================== Methodes utilisees
   onCreate() {
