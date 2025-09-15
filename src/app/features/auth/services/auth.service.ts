@@ -4,7 +4,7 @@ import {LoginForm, RegisterForm, UserDto, UserTokenDto} from '../models/user-dto
 import {HousesDto} from '../models/houses-dto';
 import {environment} from '../../../../environments/environment';
 import {Observable, tap} from 'rxjs';
-import {HousesDetailDto} from '../models/houses-detail-dto';
+import {ArduinoSensorDto} from '../models/arduinosensor-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -40,8 +40,8 @@ export class AuthService {
     return this._http.post<HousesDto>(this._apiUrl + "/maisons", form);
   }
 
-  getHousesDetail(form: HousesDetailDto): Observable<HousesDetailDto> {
-    return this._http.post<HousesDetailDto>(this._apiUrl + "/maisons-detail", form);
+  getArduinoSensors(form: ArduinoSensorDto): Observable<ArduinoSensorDto> {
+    return this._http.post<ArduinoSensorDto>(this._apiUrl + "/arduinosensors", form);
   }
 
   getUser(): UserDto | undefined {

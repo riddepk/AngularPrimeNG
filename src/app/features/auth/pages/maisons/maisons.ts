@@ -5,11 +5,11 @@ import {Router} from '@angular/router';
 import {Maisonservice} from '../../../../services/maisonservice';
 import {Component, ElementRef, inject, OnInit, ViewChild} from '@angular/core';
 import {HousesDto} from '../../models/houses-dto';
-import {HousesDetailDto} from '../../models/houses-detail-dto';
+import {ArduinoSensorDto} from '../../models/arduinosensor-dto';
 import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ButtonDirective } from "primeng/button";
-import { MaisonsDetail } from '../maisons-detail/maisons-detail';
+
 
 
 @Component({
@@ -33,7 +33,7 @@ export class Maisons implements OnInit{
   private readonly _router: Router = inject(Router);
 
   maisons: HousesDto[] = [];
-  maisonsdetail:HousesDetailDto[]=[];
+  arduinoSensorDto:ArduinoSensorDto[]=[];
   currentUser: any;
 
   constructor(private maisonService:Maisonservice
@@ -54,12 +54,12 @@ export class Maisons implements OnInit{
 
   }
 
-voirDetails(username: string, HouseName: string) {
+voirDetails(username: string, housename: string) {
   if (username) {
-    console.log(" detail username : " + username);
-    this._router.navigate(['/maisons-detail', username]);
+    console.log("username : " + username);
+    this._router.navigate(['/arduinosensors', username]);
   } else {
-    console.warn("HouseOwner ou username est manquant pour cette maison", HouseName);
+    console.warn("HouseOwner ou username est manquant pour cette maison", housename);
   }
 }
 
