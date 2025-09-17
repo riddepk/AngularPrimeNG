@@ -20,11 +20,11 @@ import { UserServices } from '../../../../services/user.services';
   styleUrl: './list-users.css'
 })
 export class ListUsers implements OnInit {
-  private readonly _authservice: AuthService = inject(AuthService);
+  //private readonly _authservice: AuthService = inject(AuthService);
   private readonly _router: Router = inject(Router);
   private readonly _http = inject(HttpClient);
 
-  listuser: UserDto[] = [];
+  listUser: UserDto[] = [];
 
   id: number = 0;
   role: string = '';
@@ -38,9 +38,9 @@ export class ListUsers implements OnInit {
   }
 
   ngOnInit() {
-    this._http.get<UserDto[]>(environment.API_URL + '/User/LstAll').subscribe({
+    this._http.get<UserDto[]>(environment.API_URL + '/User').subscribe({
       next: data => {
-        this.listuser = data;
+        this.listUser = data;
         console.log(data);
 
       },
