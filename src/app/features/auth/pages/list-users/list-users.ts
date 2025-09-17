@@ -38,7 +38,7 @@ export class ListUsers implements OnInit {
   }
 
   ngOnInit() {
-    this._http.get<UserDto[]>(environment.API_URL + '/User/LstAll').subscribe({
+    this._http.get<UserDto[]>(environment.API_URL + '/User').subscribe({
       next: data => {
         this.listuser = data;
         console.log(data);

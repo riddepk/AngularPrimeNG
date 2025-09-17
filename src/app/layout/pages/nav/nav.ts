@@ -30,27 +30,28 @@ export class Nav {
     this.currentUser = this._authService.currentUser;
   }
 
-  // --------------------------- methodes utilisees
+
+  // ----------------------------------------------------
+    // --------------------------- mlogout
   logout() {
     this._authService.logout();
     this._router.navigate(['/']);
   }
-  // ----------------------------------------------------
   // ---------------------------------------- openPopup()
   openPopupHouse() {
     const dialogRef = this.dialog.open(AddHouse);
-    dialogRef.afterClosed().subscribe((result: any) => {
-      if (result) {
-        console.log('Données reçues:', result);
+    dialogRef.afterClosed().subscribe((res: any) => {
+      if (res) {
+        console.log('Données reçues:', res);
       }
     });
   }
 
   openPopupUser() {
     const dialogRef = this.dialog.open(ListUsers);
-    dialogRef.afterClosed().subscribe((result: any) => {
-      if (result) {
-        console.log('Données reçues:', result);
+    dialogRef.afterClosed().subscribe((ret: any) => {
+      if (ret) {
+        console.log('Datas:', ret);
       }
     });
   }

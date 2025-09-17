@@ -5,12 +5,10 @@ import {Router} from '@angular/router';
 import {Maisonservice} from '../../../../services/maisonservice';
 import {Component, ElementRef, inject, OnInit, ViewChild} from '@angular/core';
 import {HousesDto} from '../../models/houses-dto';
-import {ArduinoSensorDto} from '../../models/arduinosensor-dto';
+import {ArduinoSensorDto, ArduinoSensors} from '../../models/arduinosensor-dto';
 import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ButtonDirective } from "primeng/button";
-
-
 
 @Component({
   selector: 'app-maisons',
@@ -63,7 +61,6 @@ voirDetails(username: string, housename: string) {
   }
 }
 
-
    onEdit(maison: HousesDto) {
     console.log('Éditer:', maison);
     // Redirection vers formulaire ou inline editing
@@ -74,7 +71,23 @@ voirDetails(username: string, housename: string) {
     // Confirmation + suppression
   }
 
-  // fait en sorte que la popup ait automatiquement la largeur du tableau
+@ViewChild('tableRef') tableRef!: ElementRef;
+openPopupListSensors(): void {
+      this.dialogRef.close();
+  const minWidth = 600;
+  const tableWidth = this.tableRef?.nativeElement?.offsetWidth || minWidth;
 
+  const dialogRef = this.dialog.open(ArduinoSensors, {
+    width: `${Math.max(tableWidth, minWidth)}px`,
+    maxWidth: 'none',
+    data: { }
+  });
+
+  dialogRef.afterClosed().subscribe((result: any) => {
+    if (result) {
+      console.log('Données reçues:', result);
+    }
+  });
+}
 
   }
