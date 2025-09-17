@@ -23,3 +23,37 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+nav{background-color: black;
+  color:white;
+}
+
+/* Style du bouton personnalisé */
+.custom-button {
+  background-color: black !important; /* Couleur de fond */
+  color: #ffffff !important;         /* Couleur du texte */
+  border: 1px solid black !important; /* Couleur de la bordure */
+}
+
+/* Style au survol */
+.custom-button:hover {
+  background-color: gray !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+/* Style lors du focus */
+.custom-button:focus {
+  box-shadow: 0 0 0 0.2rem black !important;
+}
+
+/* Style pour un bouton rouge */
+.custom-button-red {
+  background-color: #dc3545 !important;
+  color: #ffffff !important;
+  border: 1px solid #dc3545 !important;
+}
+
+.custom-button-red:hover {
+  background-color: #c82333 !important;
+  border-color: #bd2130 !important;
+}
