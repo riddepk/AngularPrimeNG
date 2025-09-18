@@ -5,11 +5,13 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../../../../environments/environment.development';
 import { MaisonsComponent } from '../maisons/maisons';
+import { HousesDto } from '../../models/houses-dto';
+import { FieldsetModule } from 'primeng/fieldset';
 
 @Component({
   selector: 'app-arduinosensors',
   //standalone: true,
-  imports: [CommonModule ],
+  imports: [CommonModule , FieldsetModule ],
   templateUrl: './arduinosensors.html',
      styleUrl: './arduinosensors.css',
   providers: [HttpClient]
@@ -17,7 +19,7 @@ import { MaisonsComponent } from '../maisons/maisons';
 export class ArduinoSensorComponent implements OnInit {
 
   sensorData: any[] = [];
-  @Input() maison?: MaisonsComponent;
+  @Input() selectedHouse : HousesDto ;
 
   // La nouvelle méthode pour injecter un service
   private http = inject(HttpClient);

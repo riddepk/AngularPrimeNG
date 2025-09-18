@@ -1,12 +1,14 @@
 @if( choisit){
 <div>
 
-  <h2>{{maison.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{maison.id}}</div>
-  <div>
-    <label for="housename">Nom maison : </label>
-    <input id="housename" [(ngModel)]="maison.name" placeholder="house name">
-  </div>
+  <h2>{{selectedHousetarget.HouseName | uppercase}} Details</h2>
+  <div><span>id: </span>{{selectedHousetarget.HouseId}}</div>
+
+  <p-fieldset legend="nom de la maison">
+    <p class="m-0">
+        {{selectedHousetarget.HouseName}}
+    </p>
+</p-fieldset>
 
 </div>
 }
