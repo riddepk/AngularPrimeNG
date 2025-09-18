@@ -1,1 +1,12 @@
-<p>composents works!</p>
+@if( choisit){
+<div>
+
+  <h2>{{maison.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{maison.id}}</div>
+  <div>
+    <label for="housename">Nom maison : </label>
+    <input id="housename" [(ngModel)]="maison.name" placeholder="house name">
+  </div>
+
+</div>
+}

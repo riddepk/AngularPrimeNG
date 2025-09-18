@@ -9,6 +9,8 @@ import {ArduinoSensorDto, ArduinoSensors} from '../../models/arduinosensor-dto';
 import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ButtonDirective } from "primeng/button";
+import { ArduinoSensorsServices } from '../../../../services/arduinosensorservices';
+import { ArduinoSensorComponent } from '../arduinosensors/arduinosensors';
 
 @Component({
   selector: 'app-maisons',
@@ -18,14 +20,16 @@ import { ButtonDirective } from "primeng/button";
     ReactiveFormsModule,
     TableModule,
     CommonModule,
-    ButtonDirective
+    ButtonDirective,
+    ArduinoSensorComponent,
 ],
   templateUrl: './maisons.html',
   styleUrl: './maisons.css'
 })
 
 
-export class Maisons implements OnInit{
+export class MaisonsComponent implements OnInit{
+
   private readonly _authService: AuthService = inject(AuthService);
   private readonly _fb: FormBuilder = inject(FormBuilder);
   private readonly _router: Router = inject(Router);
@@ -33,10 +37,12 @@ export class Maisons implements OnInit{
   maisons: HousesDto[] = [];
   arduinoSensorDto:ArduinoSensorDto[]=[];
   currentUser: any;
+  
+
 
   constructor(private maisonService:Maisonservice
              ,private router:Router
-             ,private dialogRef: MatDialogRef<Maisons>
+             ,private dialogRef: MatDialogRef<MaisonsComponent>
              ,private dialog: MatDialog
             ) {
         this.currentUser = this._authService.currentUser;
@@ -73,7 +79,8 @@ voirDetails(username: string, housename: string) {
 
 @ViewChild('tableRef') tableRef!: ElementRef;
 openPopupListSensors(): void {
-      this.dialogRef.close();
+   
+  this.dialogRef.close();
   const minWidth = 600;
   const tableWidth = this.tableRef?.nativeElement?.offsetWidth || minWidth;
 
@@ -90,4 +97,8 @@ openPopupListSensors(): void {
   });
 }
 
+onSelect(_maison: MaisonsComponent) {
+  const choisit = true;
+  
+}
   }

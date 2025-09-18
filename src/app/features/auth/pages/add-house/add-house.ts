@@ -27,7 +27,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 ],
   templateUrl: './add-house.html'
 })
-export class AddHouse {
+export class AddHouseComponent {
   private readonly _authService: AuthService = inject(AuthService);
   private readonly _fb: FormBuilder = inject(FormBuilder);
   private readonly _router: Router = inject(Router);
@@ -43,7 +43,7 @@ addHouseForm = this._fb.group({
     isactive: [false, Validators.required]
   });
 
-  constructor(private dialogRef: MatDialogRef<AddHouse>) {}
+  constructor(private dialogRef: MatDialogRef<AddHouseComponent>) {}
 
   close() {
     this.dialogRef.close();

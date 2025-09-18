@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import {AddHouse} from './features/auth/pages/add-house/add-house';
+import {AddHouseComponent} from './features/auth/pages/add-house/add-house';
 
 export const routes: Routes = [
       {
@@ -16,33 +16,33 @@ export const routes: Routes = [
   {
     path: 'register',
     // Lazy loading du component (importe le component puis renvois l'instance à l'appel)
-    loadComponent: () => import("./features/auth/pages/register/register").then(m => m.Register),
+    loadComponent: () => import("./features/auth/pages/register/register").then(m => m.RegisterComponent),
 
   },
   {
     path: 'login',
     // Lazy loading du component (importe le component puis renvois l'instance à l'appel)
-    loadComponent: () => import("./features/auth/pages/login/login").then(m => m.Login),
+    loadComponent: () => import("./features/auth/pages/login/login").then(m => m.LoginComponent),
 
   },
   {
     path: 'maisons',
     // Lazy loading du component (importe le component puis renvois l'instance à l'appel)
-    loadComponent: () => import("./features/auth/pages/maisons/maisons").then(m => m.Maisons),
+    loadComponent: () => import("./features/auth/pages/maisons/maisons").then(m => m.MaisonsComponent),
   },
   {
     path: 'arduinosensors/:username',
     // Lazy loading du component (importe le component puis renvois l'instance à l'appel)
-    loadComponent: () => import("./features/auth/pages/arduinosensors/arduinosensors").then(m => m.ArduinoSensors),
+    loadComponent: () => import("./features/auth/pages/arduinosensors/arduinosensors").then(m => m.ArduinoSensorComponent),
   },
     {
     path: 'add-house',
     // Lazy loading du component (importe le component puis renvois l'instance à l'appel)
-    loadComponent: () => import("./features/auth/pages/add-house/add-house").then(m => m.AddHouse),
+    loadComponent: () => import("./features/auth/pages/add-house/add-house").then(m => m.AddHouseComponent),
   },
   {
   path: 'list-users',
   // Lazy loading du component (importe le component puis renvois l'instance à l'appel)
-  loadComponent: () => import("./features/auth/pages/list-users/list-users").then(m => m.ListUsers),
+  loadComponent: () => import("./features/auth/pages/list-users/list-users").then(m => m.ListUsersComponent),
   },
 ];

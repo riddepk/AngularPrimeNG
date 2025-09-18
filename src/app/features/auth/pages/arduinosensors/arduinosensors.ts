@@ -1,27 +1,27 @@
 // arduino-sensors.component.ts
 
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject,Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../../../../environments/environment.development';
+import { MaisonsComponent } from '../maisons/maisons';
 
 @Component({
   selector: 'app-arduinosensors',
-  standalone: true,
-  // Vous n'avez plus besoin d'importer HttpClientModule ici
-  imports: [CommonModule],
+  //standalone: true,
+  imports: [CommonModule ],
   templateUrl: './arduinosensors.html',
-  styleUrl: './arduinosensors.css',
-  // On fournit le service directement dans ce composant
-  // Il sera donc disponible pour ce composant et ses enfants
+     styleUrl: './arduinosensors.css',
   providers: [HttpClient]
 })
-export class ArduinoSensors implements OnInit {
+export class ArduinoSensorComponent implements OnInit {
 
   sensorData: any[] = [];
+  @Input() maison?: MaisonsComponent;
 
   // La nouvelle méthode pour injecter un service
   private http = inject(HttpClient);
+choisit: any;
 
   ngOnInit(): void {
     this.getSensorData();

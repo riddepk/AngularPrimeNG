@@ -21,7 +21,7 @@ import {Button} from 'primeng/button';
   templateUrl: './register.html',
   styleUrl: './register.css'
 })
-export class Register {
+export class RegisterComponent {
 
   private readonly _authService: AuthService = inject(AuthService);
   private readonly _fb: FormBuilder = inject(FormBuilder);

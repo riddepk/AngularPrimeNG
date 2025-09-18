@@ -31,6 +31,7 @@
         <td>
           <!-- @if (maison.HouseOwner?.username) { -->
           <button  pButton class="pi pi-eye p-button-sm p-button-text" (click)="openPopupListSensors()" ></button>
+          <button pButton class="pi pi-eye p-button-sm p-button-text" [class.selected]="maison === selectedHouse" type="button" (click)="onSelect(maison)"></button>
           <!-- } -->
           <button pButton class="pi pi-pencil p-button-sm p-button-text" (click)="onEdit(maison)" ></button>
           <button pButton class="pi pi-trash p-button-sm p-button-danger" (click)="onDelete(maison)" ></button>
@@ -41,4 +42,9 @@
   </p-table>
 <br><br>
 <button pButton class="pi pi-trash p-button-sm p-button-danger"  (click)="close()" ></button>
+
+  @if (select) {
+   <app-arduinosensors [maison]="maisons"></app-arduinosensors>
+    }
+
 <br>

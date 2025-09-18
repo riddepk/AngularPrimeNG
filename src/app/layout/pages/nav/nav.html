@@ -2,9 +2,9 @@
   <div style="text-align: left;">
   <p-buttongroup >
     <p-button styleClass="p-button-primary custom-button" label="Manage Devices" [raised]="true" severity="info" (click)="gestionDevices()" icon ="pi pi-plus"/>
-    <p-button styleClass="p-button-primary custom-button" label="Add House" [raised]="true" severity="info" (click)="openPopupHouse()" icon ="pi pi-plus"/>
+    <p-button styleClass="p-button-primary custom-button" label="Add House" [raised]="true" severity="info" routerLink="/add-house" icon ="pi pi-plus"/>
     <p-button styleClass="p-button-primary custom-button"  label="List Users" [raised]="true" severity="info" (click)="openPopupUser()" icon ="pi pi-users"/>
-    <p-button styleClass="p-button-primary custom-button" label="List of houses" [raised]="true" severity="info" (click)="openPopupListHouses()" icon="pi pi-home"/>
+    <p-button styleClass="p-button-primary custom-button" label="List of houses" severity="info" routerLink="/maisons" icon="pi pi-home"/>
   </p-buttongroup>
 </div>
   <p-buttongroup>
