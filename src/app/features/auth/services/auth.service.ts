@@ -12,7 +12,7 @@ import {ArduinoSensorDto} from '../models/arduinosensor-dto';
 export class AuthService {
 
   private readonly _http: HttpClient = inject(HttpClient);
-  private readonly _apiUrl = environment.API_URL + "/auth";
+  private readonly _apiUrl = environment.API_URL + "/Auth";
   private readonly _currentUser = signal<UserDto | undefined>(undefined);
 
   currentUser: WritableSignal<UserTokenDto | undefined>;
