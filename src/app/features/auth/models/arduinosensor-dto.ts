@@ -56,6 +56,27 @@ export interface ArduinoSensorPagedResponseDto {
   totalPages: number;
 }
 
+// AJOUT: Interface SensorData manquante
+export interface SensorData {
+  id: string | number;
+  name: string;
+  type: string;
+  value: number;
+  unit: string;
+  lastUpdate: Date | string;
+  houseId: string | number;
+}
+
+// AJOUT: Interface House pour le typage
+export interface House {
+  HouseId: string | number; // Peut être string ou number selon votre API
+  HouseIP4: string;
+  HouseName: string;
+  IsHouseActive: boolean;
+  homestatus: string;
+  HouseOwner_Id: string | number;
+}
+
 export class ArduinoSensors{
       id: number;
       definitionOfEvent: String;

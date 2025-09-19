@@ -1,1 +1,54 @@
 @import 'primeicons/primeicons.css';
+
+    .house-list {
+      padding: 20px;
+    }
+    
+    .houses-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    
+    .houses-table th,
+    .houses-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    
+    .houses-table th {
+      background-color: #f2f2f2;
+    }
+    
+    .btn-view {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+    
+    .btn-view.selected {
+      background: #28a745;
+    }
+    
+    .btn-close {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+    
+    .house-details {
+      margin: 20px 0;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    .text-green { color: green; }
+    .text-red { color: red; }

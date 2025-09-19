@@ -33,7 +33,7 @@ export const routes: Routes = [
   {
     path: 'arduinosensors/:username',
     // Lazy loading du component (importe le component puis renvois l'instance à l'appel)
-    loadComponent: () => import("./features/auth/pages/arduinosensors/arduinosensors").then(m => m.ArduinoSensorComponent),
+    loadComponent: () => import("./features/auth/pages/arduinosensor/arduinosensor").then(m => m.ArduinoSensorComponent),
   },
     {
     path: 'add-house',
