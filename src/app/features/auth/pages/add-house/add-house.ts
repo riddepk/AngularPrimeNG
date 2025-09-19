@@ -1,38 +1,30 @@
 import { Component, inject } from '@angular/core';
-import {MatDialogActions, MatDialogContent, MatDialogRef} from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import {Button} from 'primeng/button';
-import { ButtonGroup } from "primeng/buttongroup";
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import { environment } from '../../../../../environments/environment.development';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { CheckboxModule } from 'primeng/checkbox';
+import { MatDialogRef } from '@angular/material/dialog';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-addhouse',
+  standalone:true,
   imports: [
-    MatDialogContent,
-    MatFormFieldModule,
-    MatDialogActions,
-    MatInputModule,
     FormsModule,
-    Button,
-    ButtonGroup,
     FormsModule,
     ReactiveFormsModule,
-    CheckboxModule
 ],
   templateUrl: './add-house.html'
 })
+
+
 export class AddHouseComponent {
   private readonly _authService: AuthService = inject(AuthService);
   private readonly _fb: FormBuilder = inject(FormBuilder);
   private readonly _router: Router = inject(Router);
   private readonly _http = inject(HttpClient);
-
+private readonly dialogRef = inject(MatDialogRef<AddHouseComponent>);
   name: string = '';
   ipv4: string = '';
   isactive:boolean=false;
@@ -42,12 +34,6 @@ addHouseForm = this._fb.group({
     ipv4: ['IP', [Validators.required, Validators.minLength(7), Validators.maxLength(15)]],
     isactive: [false, Validators.required]
   });
-
-  constructor(private dialogRef: MatDialogRef<AddHouseComponent>) {}
-
-  close() {
-    this.dialogRef.close();
-  }
 
   submit() {
      if (this.addHouseForm.invalid) {
@@ -68,8 +54,6 @@ addHouseForm = this._fb.group({
       next : data => console.log(data),
       error : err => console.error(err)
     });
-    // -------------------- fermeture popup
-    this.dialogRef.close();
    }
 
 
@@ -82,4 +66,10 @@ addHouseForm = this._fb.group({
   gestionDevices(){
     return;
   }
+
+close() {
+  this.dialogRef.close();
+}
+
+
 }
