@@ -14,6 +14,7 @@ import { ButtonModule } from 'primeng/button';
     FormsModule,
     FormsModule,
     ReactiveFormsModule,
+    ButtonModule
 ],
   templateUrl: './add-house.html'
 })
