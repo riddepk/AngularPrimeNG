@@ -6,6 +6,10 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ButtonModule } from 'primeng/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ButtonGroupModule } from 'primeng/buttongroup';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { CheckboxModule } from 'primeng/checkbox';
 import { 
   MatDialogActions, 
   MatDialogContent, 
@@ -17,13 +21,16 @@ import {
   selector: 'app-addhouse',
   standalone:true,
   imports: [
+    MatFormFieldModule,
+    MatDialogModule,
+    ButtonGroupModule,
     MatDialogActions,
     MatDialogContent,
     MatDialogTitle,
-    MatDialogClose,
     FormsModule,
     FormsModule,
     ReactiveFormsModule,
+     CheckboxModule,
     ButtonModule
 ],
   templateUrl: './add-house.html'
@@ -35,7 +42,8 @@ export class AddHouseComponent {
   private readonly _fb: FormBuilder = inject(FormBuilder);
   private readonly _router: Router = inject(Router);
   private readonly _http = inject(HttpClient);
-private readonly dialogRef = inject(MatDialogRef<AddHouseComponent>);
+  private readonly dialogRef = inject(MatDialogRef<AddHouseComponent>);
+
   name: string = '';
   ipv4: string = '';
   isactive:boolean=false;
