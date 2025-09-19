@@ -6,11 +6,21 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ButtonModule } from 'primeng/button';
+import { 
+  MatDialogActions, 
+  MatDialogContent, 
+  MatDialogTitle,
+  MatDialogClose 
+} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-addhouse',
   standalone:true,
   imports: [
+    MatDialogActions,
+    MatDialogContent,
+    MatDialogTitle,
+    MatDialogClose,
     FormsModule,
     FormsModule,
     ReactiveFormsModule,
