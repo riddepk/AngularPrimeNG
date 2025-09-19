@@ -1,0 +1,82 @@
+   .sensors-container {
+      margin: 20px 0;
+      padding: 20px;
+      border: 2px solid #007bff;
+      border-radius: 10px;
+      background: #f8f9fa;
+    }
+
+    .house-info {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: white;
+      border-radius: 8px;
+      border-left: 4px solid #007bff;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .sensors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .sensor-card {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .sensor-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .sensor-type {
+      background: #e9ecef;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.8em;
+    }
+
+    .sensor-value {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #007bff;
+      margin: 10px 0;
+    }
+
+    .sensor-update {
+      font-size: 0.9em;
+      color: #6c757d;
+    }
+
+    .loading, .no-sensors {
+      text-align: center;
+      padding: 20px;
+      font-size: 1.1em;
+    }
+
+    .btn-close-sensors {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    .text-green { color: #28a745; }
+    .text-red { color: #dc3545; }

@@ -23,7 +23,7 @@ import {AutoFocus} from 'primeng/autofocus';
   styleUrl: './login.css'
 })
 
-export class Login {
+export class LoginComponent {
 
   private readonly _authService: AuthService = inject(AuthService);
   private readonly _fb: FormBuilder = inject(FormBuilder);

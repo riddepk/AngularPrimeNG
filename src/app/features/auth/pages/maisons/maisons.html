@@ -1,44 +1,62 @@
+<div>
+<table class="houses-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>IP</th>
+            <th>User</th>
+            <th>HomeStatus</th>
+            <th>HomeOwner</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (maison of maisons(); track maison.HouseId) {
+            <tr>
+              <td>{{ maison.HouseId }}</td>
+              <td>{{ maison.HouseIP4 }}</td>
+              <td>{{ maison.HouseName }}</td>
+              <td>
+                <i [class]="getStatusClass(maison.IsHouseActive)">●</i>
+                {{ maison.Housestatus }}
+              </td>
+              <td>{{ maison.HouseOwner_Id }}</td>
+              <td>
+                <button 
+                  type="button"
+                  (click)="onSelect(maison)"
+                  [class.selected]="maison === selectedHouse()"
+                  class="btn-view">
+                  👁️ View
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
 
-<br>
-<h2>Liste of the Houses</h2>
-<br>
-  <p-table [value]="maisons" [tableStyle]="{ 'min-width': '50rem' }">
-    <ng-template pTemplate="header">
-      <tr>
-        <th>ID</th>
-        <th>IP</th>
-        <th>User</th>
-        <th>HomeStatus</th>
-        <th>HomeOwner</th>
-        <th></th>
-      </tr>
-    </ng-template>
-    <ng-template #body let-maison>
-      <tr>
-        <td>{{ maison.HouseId }}</td>
-        <td>{{ maison.HouseIP4 }}</td>
-        <td>{{ maison.HouseName }}</td>
-        <td>
-          <i class="pi pi-circle-fill"
-            [ngClass]="{
-                      'text-green-500': maison.IsHouseActive === true,
-                      'text-red-500': maison.IsHouseActive === false
-                    }">
-          </i>
-          {{ maison.homestatus }}
-        </td>
-        <td>{{ maison.HouseOwner_Id }}</td>
-        <td>
-          <!-- @if (maison.HouseOwner?.username) { -->
-          <button  pButton class="pi pi-eye p-button-sm p-button-text" (click)="openPopupListSensors()" ></button>
-          <!-- } -->
-          <button pButton class="pi pi-pencil p-button-sm p-button-text" (click)="onEdit(maison)" ></button>
-          <button pButton class="pi pi-trash p-button-sm p-button-danger" (click)="onDelete(maison)" ></button>
-          <button pButton class="pi pi-wrench p-button-sm p-button-secondary" (click)="onDelete(maison)" ></button>
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
-<br><br>
-<button pButton class="pi pi-trash p-button-sm p-button-danger"  (click)="close()" ></button>
-<br>
+      <br>
+      <button (click)="close()" class="btn-close">❌ Close</button>
+
+      <!-- Affichage conditionnel des détails -->
+      @if (selectedHouse()) {
+        <div class="house-details">
+          <h3>{{ selectedHouse()!.HouseName | uppercase }} Details</h3>
+          <div><span>ID: </span>{{ selectedHouse()!.HouseId }}</div>
+          
+          <fieldset>
+            <legend>Nom de la maison</legend>
+            <p>{{ selectedHouse()!.HouseName }}</p>
+          </fieldset>
+        </div>
+      }
+
+      <!-- Composant enfant avec transfert de données -->
+@if (showSensors() && selectedHouse()) {
+  <app-arduinosensor
+    [houseData]="selectedHouse()"
+    [isVisible]="showSensors()">
+  </app-arduinosensor>
+}
+   
+    </div>

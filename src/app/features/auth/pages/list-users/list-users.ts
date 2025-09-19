@@ -19,7 +19,7 @@ import { UserServices } from '../../../../services/user.services';
   templateUrl: './list-users.html',
   styleUrl: './list-users.css'
 })
-export class ListUsers implements OnInit {
+export class ListUsersComponent implements OnInit {
   //private readonly _authservice: AuthService = inject(AuthService);
   private readonly _router: Router = inject(Router);
   private readonly _http = inject(HttpClient);
@@ -31,7 +31,7 @@ export class ListUsers implements OnInit {
   username: string = '';
 
 
-  constructor(private dialogRef: MatDialogRef<ListUsers>) { }
+  constructor(private dialogRef: MatDialogRef<ListUsersComponent>) { }
 
   close() {
     this.dialogRef.close();

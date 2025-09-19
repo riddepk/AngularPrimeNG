@@ -1,0 +1,58 @@
+  <div class="sensors-container" *ngIf="houseData && isVisible">
+      <h3>🔌 Capteurs Arduino - {{ houseData.HouseName }}</h3>
+      
+      <!-- Informations de la maison -->
+      <div class="house-info">
+        <h4>📍 Maison sélectionnée</h4>
+        <div class="info-grid">
+          <div><strong>ID:</strong> {{ houseData.HouseId }}</div>
+          <div><strong>Nom:</strong> {{ houseData.HouseName }}</div>
+          <div><strong>IP:</strong> {{ houseData.HouseIP4 }}</div>
+          <div>
+            <strong>Statut:</strong>
+            <span [class]="getStatusClass(houseData.IsHouseActive)">
+              {{ houseData.IsHouseActive ? '🟢 Active' : '🔴 Inactive' }}
+            </span>
+          </div>
+          <div><strong>Propriétaire:</strong> {{ houseData.HouseOwner_Id }}</div>
+        </div>
+      </div>
+
+      <!-- État de chargement -->
+      @if (loading()) {
+        <div class="loading">⏳ Chargement des capteurs...</div>
+      }
+
+      <!-- Données des capteurs -->
+      @if (!loading() && sensorData().length > 0) {
+        <div class="sensors-grid">
+          <h4>📊 Données des capteurs ({{ sensorData().length }})</h4>
+          @for (sensor of sensorData(); track sensor.id) {
+            <div class="sensor-card">
+              <div class="sensor-header">
+                <h5>🔧 {{ sensor.name }}</h5>
+                <span class="sensor-type">{{ sensor.type }}</span>
+              </div>
+              <div class="sensor-value">
+                {{ sensor.value }} {{ sensor.unit }}
+              </div>
+              <div class="sensor-update">
+                Mise à jour: {{ sensor.lastUpdate | date:'dd/MM/yyyy HH:mm' }}
+              </div>
+            </div>
+          }
+        </div>
+      }
+
+      <!-- Aucun capteur -->
+      @if (!loading() && sensorData().length === 0) {
+        <div class="no-sensors">
+          ❌ Aucune donnée de capteur disponible pour cette maison.
+        </div>
+      }
+
+      <!-- Bouton fermer -->
+      <button (click)="onClose()" class="btn-close-sensors">
+        ❌ Fermer les capteurs
+      </button>
+    </div>
