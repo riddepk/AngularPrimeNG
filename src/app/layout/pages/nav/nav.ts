@@ -38,25 +38,6 @@ export class NavComponent {
     this._router.navigate(['/']);
   }
 
-  openPopupUser() {
-    const dialogRef = this.dialog.open(ListUsersComponent);
-    dialogRef.afterClosed().subscribe((ret: any) => {
-      if (ret) {
-        console.log('Datas:', ret);
-      }
-    });
-  }
-
-
-  openAddHouse() {
-  const dialogRef = this.dialog.open(AddHouseComponent);
-  dialogRef.afterClosed().subscribe((ret: any) => {
-    if (ret) {
-      console.log('House added:', ret);
-    }
-  });
-}
-
 // ------------------------- gestionDevices()
   gestionDevices() {
 

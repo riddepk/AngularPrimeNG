@@ -15,7 +15,8 @@ import { UserServices } from '../../../../services/user.services';
 
 @Component({
   selector: 'app-list-users',
-  imports: [MatInputModule, ReactiveFormsModule, TableModule, Button, MatDialogActions],
+  standalone:true,
+  imports: [ ReactiveFormsModule, TableModule, Button],
   templateUrl: './list-users.html',
   styleUrl: './list-users.css'
 })
@@ -30,11 +31,6 @@ export class ListUsersComponent implements OnInit {
   role: string = '';
   username: string = '';
 
-  constructor(private dialogRef: MatDialogRef<ListUsersComponent>) { }
-
-  close() {
-    this.dialogRef.close();
-  }
 
   ngOnInit() {
     this._http.get<UserDto[]>(environment.API_URL + '/User').subscribe({
