@@ -1,31 +1,26 @@
-<h2 mat-dialog-title>Add House</h2>
-<form [formGroup]="addHouseForm">
+<div class="page-container">
+  <div class="form-card">
+    <h1>Add House</h1>
+    <form [formGroup]="addHouseForm" (ngSubmit)="submit()">
+      <div class="form-content">
+        <div class="input-row">
+          <label for="name" class="field-label">Name:</label>
+          <input type="text" pInputText formControlName="name" placeholder="Name" />
 
-<mat-dialog-content>
-  <mat-form-field appearance="fill">
-    <input matInput placeholder="Name" formControlName="name">
-  </mat-form-field>
-  <br>
- <mat-form-field appearance="fill">
-   <input matInput placeholder="IPV4" formControlName="ipv4">
- </mat-form-field>
-<br>
-  <div class="field">
-    <label for="isactive">Active</label>
-    <p-checkbox 
-      inputId="isactive"
-      formControlName="isactive"
-      [binary]="true">
-    </p-checkbox>
+          <label for="ipv4" class="field-label">IP:</label>
+          <input type="text" pInputText formControlName="ipv4" placeholder="IP" />
+        </div>
+
+        <div class="checkbox-field">
+          <p-checkbox formControlName="isactive" [binary]="true"></p-checkbox>
+          <label>Active</label>
+        </div>
+
+        <div class="button-group">
+          <p-button label="Save" type="submit"></p-button>
+          <p-button label="Cancel" type="button"></p-button>
+        </div>
+      </div>
+    </form>
   </div>
-</mat-dialog-content>
-<br>
-<div style="text-align: right;">
-  <p-buttongroup>
-    <mat-dialog-actions align="end">
-      <p-button class="pbutton" label="Cancel"  severity="danger" (click)="close()" />
-      <p-button class="pbutton" label="Submit"  severity="info" (click)="submit()" />
-    </mat-dialog-actions>
-  </p-buttongroup>
 </div>
-</form>

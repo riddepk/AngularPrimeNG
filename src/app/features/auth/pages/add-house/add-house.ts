@@ -4,91 +4,75 @@ import { environment } from '../../../../../environments/environment.development
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { MatDialogRef } from '@angular/material/dialog';
 import { ButtonModule } from 'primeng/button';
-import { MatDialogModule } from '@angular/material/dialog';
 import { ButtonGroupModule } from 'primeng/buttongroup';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { CheckboxModule } from 'primeng/checkbox';
-import { 
-  MatDialogActions, 
-  MatDialogContent, 
-  MatDialogTitle,
-  MatDialogClose 
-} from '@angular/material/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-addhouse',
-  standalone:true,
+  standalone: true,
   imports: [
-    MatFormFieldModule,
-    MatDialogModule,
+    CommonModule,
+    ButtonModule,
     ButtonGroupModule,
-    MatDialogActions,
-    MatDialogContent,
-    MatDialogTitle,
-    FormsModule,
     FormsModule,
     ReactiveFormsModule,
-     CheckboxModule,
-    ButtonModule
-],
-  templateUrl: './add-house.html'
+    CheckboxModule,
+    InputTextModule // ← AJOUTÉ
+  ],
+  templateUrl: './add-house.html',
+  styleUrl: './add-house.css',
 })
-
-
 export class AddHouseComponent {
   private readonly _authService: AuthService = inject(AuthService);
   private readonly _fb: FormBuilder = inject(FormBuilder);
   private readonly _router: Router = inject(Router);
   private readonly _http = inject(HttpClient);
-  private readonly dialogRef = inject(MatDialogRef<AddHouseComponent>);
 
-  name: string = '';
-  ipv4: string = '';
-  isactive:boolean=false;
-
-addHouseForm = this._fb.group({
-    name: ['Name', Validators.required],
-    ipv4: ['IP', [Validators.required, Validators.minLength(7), Validators.maxLength(15)]],
-    isactive: [false, Validators.required]
+  // Formulaire corrigé
+  addHouseForm = this._fb.group({
+    name: ['', Validators.required], // ← Chaîne vide au lieu de "Name"
+    ipv4: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(15)]], // ← Chaîne vide au lieu de "IP"
+    isactive: [false] // ← Pas besoin de required pour boolean
   });
 
   submit() {
-     if (this.addHouseForm.invalid) {
-            console.warn('Formulaire invalide');
+    if (this.addHouseForm.invalid) {
+      console.warn('Formulaire invalide');
+      console.log('Erreurs:', this.addHouseForm.errors);
       return;
     }
-    this.addHouseForm.markAllAsTouched();
-    //console.log('=============>'+JSON.stringify(this.addHouseForm.value)+'<========================');
-    let dataFromForm = {
-      Name : this.addHouseForm.controls['name'].value,
-      IPV4 : this.addHouseForm.controls['ipv4'].value,
-      IsActive : this.addHouseForm.controls['isactive'].value,
-    }
-    //console.log('=============>'+JSON.stringify(dataFromForm)+'<========================');
+
+    const dataFromForm = {
+      Name: this.addHouseForm.controls['name'].value,
+      IPV4: this.addHouseForm.controls['ipv4'].value,
+      IsActive: this.addHouseForm.controls['isactive'].value,
+    };
+
+    console.log('Données envoyées:', dataFromForm);
+
     this._http.post(environment.API_URL + '/House', dataFromForm, {
       headers: { Authorization: 'Bearer ' + this._authService.currentUser()?.token }
-    }).subscribe( {
-      next : data => console.log(data),
-      error : err => console.error(err)
+    }).subscribe({
+      next: data => {
+        console.log('Succès:', data);
+        // Redirection ou message de succès
+      },
+      error: err => {
+        console.error('Erreur:', err);
+      }
     });
-   }
+  }
 
-
+  // Supprimez les méthodes inutiles si vous ne les utilisez pas
   createHouse() {
-    console.log('Creér: Creation d\'une nouvelle maison');
+    console.log('Créer: Creation d\'une nouvelle maison');
     this._router.navigate(['./add-house']);
-    //this._router.navigate(['./create-house']);
-    return;
-  }
-  gestionDevices(){
-    return;
   }
 
-close() {
-  this.dialogRef.close();
-}
-
-
+  gestionDevices() {
+    return;
+  }
 }
