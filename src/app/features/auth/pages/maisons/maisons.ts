@@ -39,7 +39,7 @@ export class MaisonsComponent implements OnInit{
   }
 
   loadHouses(): void {
-    const apiUrl = environment.API_URL + '/api/House';
+    const apiUrl = environment.API_URL + '/House';
 
     this.http.get<HousesDto[]>(apiUrl).subscribe({
       next: (data: HousesDto[]) => {

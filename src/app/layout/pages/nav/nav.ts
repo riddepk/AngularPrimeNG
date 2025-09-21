@@ -5,9 +5,6 @@ import {Router, RouterLink} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import { AuthService } from '../../../features/auth/services/auth.service';
 import { UserTokenDto } from '../../../features/auth/models/user-dto';
-import {AddHouseComponent} from '../../../features/auth/pages/add-house/add-house';
-import { ListUsersComponent } from '../../../features/auth/pages/list-users/list-users';
-import { MaisonsComponent } from '../../../features/auth/pages/maisons/maisons';
 
 @Component({
   selector: 'app-nav',
