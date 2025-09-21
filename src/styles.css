@@ -1,5 +1,15 @@
 @import "primeicons/primeicons.css";
 
+:root {
+  --popupBorder: #2196F3;
+  --Headers:blue;
+  --lightOk:green;
+  --lihgtKo:red;
+  --navBkgColor:black;
+  --BkgColor:black;
+  --hoverBkgColor:gray;
+  --hovercolor:white;
+}
 
 *{
   padding: 0;
@@ -7,37 +17,38 @@
   box-sizing: border-box;
 }
 .text-green-500 {
-  color: green;
+  color: var(--lightOk);
 }
 
 .text-red-500 {
-  color: red;
+  color: var(--lightko);
 }
 
 h1,h2{
   text-align: center;
-  color:blue;
+  color:var(--Headers);
+    margin-bottom: 30px;
 }
 html, body { height: 100%; }
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-nav{background-color: black;
+nav{background-color: var(--navBkgColor);
   color:white;
 }
 
 /* Style du bouton personnalisé */
 .custom-button {
-  background-color: black !important; /* Couleur de fond */
-  color: #ffffff !important;         /* Couleur du texte */
-  border: 1px solid black !important; /* Couleur de la bordure */
+  background-color: nav(--BkgColor) !important; /* Couleur de fond */
+  color: var(--hovercolor) !important;         /* Couleur du texte */
+  border: 1px solid nav(--BkgColor) !important; /* Couleur de la bordure */
 }
 
 /* Style au survol */
 .custom-button:hover {
-  background-color: gray !important;
-  color: #ffffff !important;
+  background-color: var(--hoverBkgColor) !important;
+  color: var(--hovercolor) !important;
   border-color: transparent !important;
 }
 
@@ -56,4 +67,78 @@ nav{background-color: black;
 .custom-button-red:hover {
   background-color: #c82333 !important;
   border-color: #bd2130 !important;
+}
+
+<!---->
+.page-container {
+  background-color: #f5f5f5;
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.form-card {
+  background-color: white;
+  border: 2px solid #2196F3;
+  padding: 40px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-row {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.field-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.field-label {
+  color: #2196F3;
+  font-weight: 500;
+  min-width: 60px;
+  text-align: left;
+}
+
+.field-group input {
+  flex: 1;
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.field-group input:focus {
+  outline: none;
+  border-color: #2196F3;
+  box-shadow: 0 0 5px rgba(33, 150, 243, 0.3);
+}
+
+.checkbox-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
 }

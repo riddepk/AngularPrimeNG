@@ -1,22 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { MatDialogRef, MatDialogActions } from '@angular/material/dialog';
-import { MatInputModule } from "@angular/material/input";
-import { ButtonGroup } from "primeng/buttongroup";
 import { Button } from "primeng/button";
 import { UserDto } from '../../models/user-dto';
 import { TableModule } from "primeng/table";
 import { environment } from '../../../../../environments/environment.development';
-import { UserServices } from '../../../../services/user.services';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-list-users',
   standalone:true,
-  imports: [ ReactiveFormsModule, TableModule, Button],
+  imports: [
+     ReactiveFormsModule,
+     TableModule,
+     Button,
+     RouterModule,
+    ],
   templateUrl: './list-users.html',
   styleUrl: './list-users.css'
 })
