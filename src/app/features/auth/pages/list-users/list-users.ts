@@ -30,7 +30,6 @@ export class ListUsersComponent implements OnInit {
   role: string = '';
   username: string = '';
 
-
   constructor(private dialogRef: MatDialogRef<ListUsersComponent>) { }
 
   close() {
