@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import { environment } from '../../../../../environments/environment.development';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ButtonModule } from 'primeng/button';
 import { ButtonGroupModule } from 'primeng/buttongroup';
@@ -20,7 +20,8 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     CheckboxModule,
-    InputTextModule // ← AJOUTÉ
+    InputTextModule ,
+    RouterModule,
   ],
   templateUrl: './add-house.html',
   styleUrl: './add-house.css',

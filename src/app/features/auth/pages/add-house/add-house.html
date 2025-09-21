@@ -4,21 +4,26 @@
     <form [formGroup]="addHouseForm" (ngSubmit)="submit()">
       <div class="form-content">
         <div class="input-row">
-          <label for="name" class="field-label">Name:</label>
-          <input type="text" pInputText formControlName="name" placeholder="Name" />
-
-          <label for="ipv4" class="field-label">IP:</label>
-          <input type="text" pInputText formControlName="ipv4" placeholder="IP" />
+          <div class="field-group">
+            <label for="name" class="field-label">Name:</label>
+            <input type="text" pInputText formControlName="name" placeholder="Name" />
+          </div>
+          <div class="field-group">
+            <label for="ipv4" class="field-label">IP:</label>
+            <input type="text" pInputText formControlName="ipv4" placeholder="IP" />
+          </div>
         </div>
 
         <div class="checkbox-field">
-          <p-checkbox formControlName="isactive" [binary]="true"></p-checkbox>
-          <label>Active</label>
+          <div class="field-group">
+            <p-checkbox formControlName="isactive" [binary]="true"></p-checkbox>
+            <label for="isactive" class="field-label">isActive</label>
+          </div>
         </div>
 
         <div class="button-group">
           <p-button label="Save" type="submit"></p-button>
-          <p-button label="Cancel" type="button"></p-button>
+          <p-button label="Cancel" routerLink="/home" type="button"></p-button>
         </div>
       </div>
     </form>
