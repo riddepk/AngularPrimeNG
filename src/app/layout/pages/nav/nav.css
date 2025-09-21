@@ -9,3 +9,108 @@
   font-size: 20px;
 }
 
+/* Styles pour forcer les boutons de navigation en noir */
+::ng-deep nav .p-button,
+::ng-deep nav button,
+::ng-deep .p-menubar .p-menuitem-link {
+  background-color: black !important;
+  border-color: black !important;
+  color: white !important;
+}
+
+::ng-deep nav .p-button:hover,
+::ng-deep nav button:hover,
+::ng-deep .p-menubar .p-menuitem-link:hover {
+  background-color: transparent !important;
+  border-color: #333 !important;
+  color: white !important;
+}
+
+/* Si c'est une barre de menu PrimeNG */
+::ng-deep .p-menubar {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+::ng-deep .p-menubar .p-menubar-root-list {
+  background-color: transparent !important;
+}
+
+/* Pour tous les éléments dans la nav */
+::ng-deep nav * {
+  background-color: transparent !important;
+  color: white !important;
+}
+
+/* Style spécifique pour vos boutons si ils ont des classes particulières */
+::ng-deep .p-button-info,
+::ng-deep .p-button-primary {
+  background-color:transparent!important;
+  border-color: black !important;
+}
+
+
+/* Conteneur du tableau */
+.table-container {
+  background-color: white;
+  border: 2px solid lightblue;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre */
+h2 {
+  color: darkblue;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Navigation de base */
+nav {
+  background-color: black;
+  color: white;
+}
+
+/* Effet hover spécifique pour les boutons de menu */
+::ng-deep nav .p-button:hover {
+  background-color: #666 !important;
+  border-color: #666 !important;
+  color: white !important;
+  transition: background-color 0.2s ease !important;
+}
+
+/* Styles pour le tableau */
+::ng-deep .p-datatable-header {
+  background-color: white;
+  border-bottom: 2px solid lightblue;
+}
+
+::ng-deep .p-datatable-thead > tr > th {
+  background-color: white;
+  color: darkblue;
+  font-weight: bold;
+  border-bottom: 2px solid lightblue;
+  padding: 12px;
+  text-align: center;
+}
+
+::ng-deep .p-datatable-tbody > tr > td {
+  background-color: white;
+  color: darkblue;
+  border-bottom: 1px solid lightblue;
+  padding: 10px;
+  text-align: center;
+}
+
+::ng-deep .p-datatable-tbody > tr:hover {
+  background-color: #f0f8ff;
+}
+
+/* Style du bouton */
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
