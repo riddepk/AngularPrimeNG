@@ -28,7 +28,7 @@ export const routes: Routes = [
   {
     path: 'maisons',
     // Lazy loading du component (importe le component puis renvois l'instance à l'appel)
-    loadComponent: () => import("./features/auth/pages/maisons/maisons").then(m => m.MaisonsComponent),
+    loadComponent: () => import("./features/auth/pages/list-maisons/list-maisons").then(m => m.ListMaisonsComponent),
   },
   {
     path: 'arduinosensors/:username',

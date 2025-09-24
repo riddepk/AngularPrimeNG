@@ -22,11 +22,11 @@ import { environment } from '../../../../../environments/environment.development
     CommonModule,
     ArduinoSensorComponent,
 ],
-  templateUrl: './maisons.html',
-  styleUrl: './maisons.css'
+  templateUrl: './list-maisons.html',
+  styleUrl: './list-maisons.css'
 })
 
-export class MaisonsComponent implements OnInit{
+export class ListMaisonsComponent implements OnInit{
  // Utilisation des signals Angular 20
   maisons = signal<HousesDto[]>([]);
   selectedHouse = signal<HousesDto | null>(null);

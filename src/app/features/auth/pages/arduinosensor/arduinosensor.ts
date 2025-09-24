@@ -1,10 +1,9 @@
 // arduino-sensors.component.ts
 
-import { Component, OnInit, inject,Input, SimpleChanges, Output, EventEmitter, signal, OnChanges, effect } from '@angular/core';
+import { Component, Input, SimpleChanges, Output, EventEmitter, signal, OnChanges, effect } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../../../../environments/environment.development';
-import { MaisonsComponent } from '../maisons/maisons';
 import { HousesDto } from '../../models/houses-dto';
 import {SensorData ,House } from '../../models/arduinosensor-dto';
 import { FieldsetModule } from 'primeng/fieldset';
@@ -24,7 +23,7 @@ export class ArduinoSensorComponent implements OnChanges {
 @Input() isVisible: boolean = false;
 
 @Output() closeRequested = new EventEmitter<void>();
-  
+
   // ÉVÉNEMENTS DE SORTIE (de l'enfant vers le parent)
   @Output() sensorLoaded = new EventEmitter<SensorData[]>();
 
@@ -81,6 +80,9 @@ export class ArduinoSensorComponent implements OnChanges {
     });
   }
 
+  /*-----------------------------------------------
+          onClose() methode
+  ------------------------------------------------- */
   onClose(): void {
     this.closeRequested.emit(); // Émet vers le parent
   }
