@@ -5,7 +5,7 @@ export interface HousesDto {
   IsHouseActive: boolean;
   HouseName:string;
   HousePassword:string;
-  Housestatus: string; 
+  Housestatus: string;
 }
 
 export class HousesModel {
@@ -15,7 +15,7 @@ export class HousesModel {
     this.HouseOwner_Id = _username;
     this.IsHouseActive = _homestatus;
     this.HouseName= _housename;
-    this.HousePassword=_housepassword;  
+    this.HousePassword=_housepassword;
     this.Housestatus =  _housestatus;
   }
 
@@ -25,5 +25,16 @@ export class HousesModel {
   IsHouseActive: boolean;
   HouseName:string;
   HousePassword:string;
-  Housestatus: string; 
+  Housestatus: string;
+}
+
+
+export interface HousesJson {
+  id:number;
+  ipv4: string;
+  owner_id:string;
+  isActive: boolean;
+  name: string;
+  password:string;
+  status:string;
 }

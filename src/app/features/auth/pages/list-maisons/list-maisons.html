@@ -12,21 +12,22 @@
           </tr>
         </thead>
         <tbody>
-          @for (maison of listmaisons(); track maison.HouseId) {
+          @for (maison of listmaisons(); track maison.id) {
             <tr>
-              <td>{{ maison.HouseId }}</td>
-              <td>{{ maison.HouseIP4 }}</td>
-              <td>{{ maison.HouseName }}</td>
+              <td>{{ maison.id }}</td>
+              <td>{{ maison.ipv4 }}</td>
+              <td>{{ maison.name }}</td>
               <td>
-                <i [class]="getStatusClass(maison.IsHouseActive)">●</i>
-                {{ maison.Housestatus }}
+                <i [class]="getStatusClass(maison.isActive)">●</i>
+                {{ maison.status }}
               </td>
-              <td>{{ maison.HouseOwner_Id }}</td>
+              <td>{{ maison.owner_id }}</td>
               <td>
                 <button
                   type="button"
-                  (click)="onSelect(maison)"
-                  [class.selected]="maison === selectedHouse()"
+                  (click)="onSelect(maison )"
+                  [class.selected]="maison.id === selectedHouse()?.HouseId"
+
                   class="btn-view">
                   👁️ View
                 </button>
