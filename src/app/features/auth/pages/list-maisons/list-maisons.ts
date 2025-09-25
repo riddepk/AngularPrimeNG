@@ -1,16 +1,13 @@
 import { TableModule } from 'primeng/table';
-import {AuthService} from '../../services/auth.service';
-import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {Router} from '@angular/router';
-import {Maisonservice} from '../../../../services/maisonservice';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Component, inject, OnInit, signal} from '@angular/core';
-import {HousesDto, HousesModel} from '../../models/houses-dto';
-import {ArduinoSensorDto} from '../../models/arduinosensor-dto';
+import {HousesDto} from '../../models/houses-dto';
 import { CommonModule } from '@angular/common';
-import { ButtonDirective } from "primeng/button";
 import { ArduinoSensorComponent } from '../arduinosensor/arduinosensor';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment.development';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-maisons',
@@ -27,30 +24,45 @@ import { environment } from '../../../../../environments/environment.development
 })
 
 export class ListMaisonsComponent implements OnInit{
+  private readonly _router: Router = inject(Router);
+  private readonly _http = inject(HttpClient);
+  private readonly _authservice: AuthService = inject(AuthService);
+
  // Utilisation des signals Angular 20
-  maisons = signal<HousesDto[]>([]);
+  listmaisons = signal<HousesDto[]>([]);
   selectedHouse = signal<HousesDto | null>(null);
   showSensors = signal<boolean>(false);
+
+  HouseId: number = 0;
+  HouseName: string = '';
+  HouseIP4:string='';
+  isactive: boolean = false;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
+    console.log('Token:', this._authservice.currentUser()?.token);
     this.loadHouses();
   }
 
-  loadHouses(): void {
-    const apiUrl = environment.API_URL + '/House';
-
-    this.http.get<HousesDto[]>(apiUrl).subscribe({
-      next: (data: HousesDto[]) => {
-        this.maisons.set(data);
-        console.log('Maisons chargées:', data);
-      },
-      error: (error) => {
-        console.error('Erreur lors du chargement des maisons:', error);
-      }
-    });
+  loadHouses():void {
+this._http.get(environment.API_URL + '/House', {
+  headers: {
+    Authorization: 'Bearer ' + this._authservice.currentUser()?.token,
+    'Content-Type': 'application/json'
   }
+}).subscribe({
+  next: data => console.log('Success:', data),
+  error: err => {
+    console.error('Error details:', err);
+    // Si erreur 401, rediriger vers login
+    if (err.status === 401) {
+      this._router.navigate(['/login']);
+    }
+  }
+});
+  }
+
 
   onSelect(maison: HousesDto): void {
     this.selectedHouse.set(maison);

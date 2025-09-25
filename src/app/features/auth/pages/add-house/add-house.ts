@@ -32,10 +32,10 @@ export class AddHouseComponent {
   private readonly _router: Router = inject(Router);
   private readonly _http = inject(HttpClient);
 
-  // Formulaire corrigé
+  // Formulaire corrigé - Formulaire utilisé UNIQUEMENT SI INPUT /!\
   addHouseForm = this._fb.group({
-    name: ['', Validators.required], // ← Chaîne vide au lieu de "Name"
-    ipv4: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(15)]], // ← Chaîne vide au lieu de "IP"
+    name: ['', Validators.required],
+    ipv4: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(15)]],
     isactive: [false] // ← Pas besoin de required pour boolean
   });
 
@@ -45,7 +45,7 @@ export class AddHouseComponent {
       console.log('Erreurs:', this.addHouseForm.errors);
       return;
     }
-
+    // les données qui ont étées saisies (addHouseForm.controls['xx'].value)
     const dataFromForm = {
       Name: this.addHouseForm.controls['name'].value,
       IPV4: this.addHouseForm.controls['ipv4'].value,
