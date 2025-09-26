@@ -1,27 +1,27 @@
 @import 'primeicons/primeicons.css';
 
-    .house-list {
+.house-list {
       padding: 20px;
     }
-    
-    .houses-table {
+
+.houses-table {
       width: 100%;
       border-collapse: collapse;
       margin: 20px 0;
     }
-    
-    .houses-table th,
-    .houses-table td {
+
+.houses-table th,
+.houses-table td {
       border: 1px solid #ddd;
       padding: 8px;
       text-align: left;
     }
-    
-    .houses-table th {
+
+.houses-table th {
       background-color: #f2f2f2;
     }
-    
-    .btn-view {
+
+.btn-view {
       background: #007bff;
       color: white;
       border: none;
@@ -29,12 +29,12 @@
       cursor: pointer;
       border-radius: 3px;
     }
-    
-    .btn-view.selected {
+
+.btn-view.selected {
       background: #28a745;
     }
-    
-    .btn-close {
+
+.btn-close {
       background: #dc3545;
       color: white;
       border: none;
@@ -42,13 +42,23 @@
       cursor: pointer;
       border-radius: 3px;
     }
-    
-    .house-details {
+
+.house-details {
       margin: 20px 0;
       padding: 15px;
       border: 1px solid #ccc;
       border-radius: 5px;
     }
-    
-    .text-green { color: green; }
-    .text-red { color: red; }
+
+ .text-green { color: green; }
+.text-red { color: red; }
+
+.table-container {
+  background-color: white;
+  border: 2px solid lightblue;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}

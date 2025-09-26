@@ -1,7 +1,7 @@
 <h1>Liste of the houses</h1>
-<div>
-<table class="houses-table">
-        <thead>
+<div class="table-container">
+<p-table [value]="listmaisons()" [tableStyle]="{ 'min-width': '50%' }">
+      <ng-template #header>
           <tr>
             <th>ID</th>
             <th>IP</th>
@@ -10,9 +10,9 @@
             <th>HomeOwner</th>
             <th>Actions</th>
           </tr>
-        </thead>
-        <tbody>
-          @for (maison of listmaisons(); track maison.id) {
+      </ng-template>
+
+          <ng-template #body let-maison>
             <tr>
               <td>{{ maison.id }}</td>
               <td>{{ maison.ipv4 }}</td>
@@ -33,9 +33,8 @@
                 </button>
               </td>
             </tr>
-          }
-        </tbody>
-      </table>
+          </ng-template>
+      </p-table>
 
       <br>
       <button (click)="close()" class="btn-close">❌ Close</button>
@@ -54,11 +53,11 @@
       }
 
       <!-- Composant enfant avec transfert de données -->
-@if (showSensors() && selectedHouse()) {
-  <app-arduinosensor
-    [houseData]="selectedHouse()"
-    [isVisible]="showSensors()">
-  </app-arduinosensor>
-}
+      @if (showSensors() && selectedHouse()) {
+        <app-arduinosensor
+          [houseData]="selectedHouse()"
+          [isVisible]="showSensors()">
+        </app-arduinosensor>
+      }
 
     </div>
