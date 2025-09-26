@@ -142,3 +142,30 @@ nav{background-color: var(--navBkgColor);
   justify-content: center;
   margin-top: 20px;
 }
+
+
+::ng-deep .p-datatable-header {
+  background-color: white;
+  border-bottom: 2px solid lightblue;
+}
+
+::ng-deep .p-datatable-thead > tr > th {
+  background-color: white;
+  color: darkblue;
+  font-weight: bold;
+  border-bottom: 2px solid lightblue;
+  padding: 12px;
+  text-align: center;
+}
+
+::ng-deep .p-datatable-tbody > tr > td {
+  background-color: white;
+  color: darkblue;
+  border-bottom: 1px solid lightblue;
+  padding: 10px;
+  text-align: center;
+}
+
+::ng-deep .p-datatable-tbody > tr:hover {
+  background-color: #f0f8ff; /* Bleu très clair au survol */
+}
