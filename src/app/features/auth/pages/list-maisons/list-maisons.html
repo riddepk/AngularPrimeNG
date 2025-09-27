@@ -1,3 +1,4 @@
+<br><br>
 <h1>Liste of the houses</h1>
 <div class="table-container">
 <p-table [value]="listmaisons()" [tableStyle]="{ 'min-width': '50%' }">
@@ -5,23 +6,15 @@
           <tr>
             <th>ID</th>
             <th>IP</th>
-            <th>User</th>
-            <th>HomeStatus</th>
-            <th>HomeOwner</th>
+            <th>Name</th>
             <th>Actions</th>
           </tr>
       </ng-template>
-
           <ng-template #body let-maison>
             <tr>
               <td>{{ maison.id }}</td>
-              <td>{{ maison.ipv4 }}</td>
+              <td>{{ maison.ipV4 }}</td>
               <td>{{ maison.name }}</td>
-              <td>
-                <i [class]="getStatusClass(maison.isActive)">●</i>
-                {{ maison.status }}
-              </td>
-              <td>{{ maison.owner_id }}</td>
               <td>
                 <button
                   type="button"

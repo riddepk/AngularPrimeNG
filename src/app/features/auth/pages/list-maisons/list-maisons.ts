@@ -59,6 +59,7 @@ export class ListMaisonsComponent implements OnInit{
     }).subscribe({
       next: data => {
                       console.log('Success:', data);
+                      console.log('Première maison:', (data as HousesJson[])[0]);
                       this.listmaisons.set(data as HousesJson[]);
                     },
       error: err => {
@@ -69,19 +70,20 @@ export class ListMaisonsComponent implements OnInit{
         }
       }
     });
+
   }
 
 
 onSelect(maison: HousesJson): void {
   const mapped: HousesDto = {
-    HouseId: maison.id,
-    HouseName: maison.name,
-    HouseIP4: maison.ipv4,
-    HouseOwner_Id: '0', // ou une vraie valeur
-    IsHouseActive: maison.isActive,
-    Housestatus: maison.isActive ? 'Active' : 'Inactive',
-    HousePassword: ''
-  };
+                        HouseId: maison.id,
+                        HouseName: maison.name,
+                        HouseIP4: maison.ipV4,
+                        HouseOwner_Id: '0', // ou une vraie valeur
+                        IsHouseActive: maison.isActive,
+                        Housestatus: maison.isActive ? 'Active' : 'Inactive',
+                        HousePassword: ''
+                      };
   this.selectedHouse.set(mapped);
   this.showSensors.set(true);
   console.log('Maison sélectionnée:', mapped);

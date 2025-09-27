@@ -31,8 +31,8 @@ export class HousesModel {
 
 export interface HousesJson {
   id:number;
-  ipv4: string;
-  owner_id:string;
+  ipV4: string;
+  users:string;
   isActive: boolean;
   name: string;
   password:string;
