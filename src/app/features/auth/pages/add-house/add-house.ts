@@ -57,14 +57,14 @@ export class AddHouseComponent {
     this._http.post(environment.API_URL + '/House', dataFromForm, {
       headers: { Authorization: 'Bearer ' + this._authService.currentUser()?.token }
     }).subscribe({
-      next: data => {
-        console.log('Succès:', data);
-        // Redirection ou message de succès
-      },
-      error: err => {
-        console.error('Erreur:', err);
-      }
-    });
+                  next: data => {
+                    console.log('Succès:', data);
+                    // Redirection ou message de succès
+                  },
+                  error: err => {
+                    console.error('Erreur:', err);
+                  }
+                 });
   }
 
   // Supprimez les méthodes inutiles si vous ne les utilisez pas

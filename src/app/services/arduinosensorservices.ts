@@ -1,12 +1,20 @@
-import {Injectable, signal, WritableSignal} from '@angular/core';
+import {inject, Injectable, signal, WritableSignal} from '@angular/core';
 import {HousesModel} from '../features/auth/models/houses-dto';
 import {UserTokenDto} from '../features/auth/models/user-dto';
-import { ArduinoSensorDto } from '../features/auth/models/arduinosensor-dto';
+import { ArduinoSensorDto, SensorTempHumDto } from '../features/auth/models/arduinosensor-dto';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/internal/Observable';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArduinoSensorsServices {
+
+  private readonly http = inject(HttpClient);
+    getSensorTempHumData(): Observable<SensorTempHumDto> {
+    return this.http.get<SensorTempHumDto>(environment.IOT_URL+'/sensor');
+  }
 
   currentUser: WritableSignal<UserTokenDto | undefined> | undefined;
 

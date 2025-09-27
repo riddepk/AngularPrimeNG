@@ -67,15 +67,6 @@ export interface SensorData {
   houseId: string | number;
 }
 
-// AJOUT: Interface House pour le typage
-export interface House {
-  HouseId: string | number; // Peut être string ou number selon votre API
-  HouseIP4: string;
-  HouseName: string;
-  IsHouseActive: boolean;
-  homestatus: string;
-  HouseOwner_Id: string | number;
-}
 
 export class ArduinoSensors{
       id: number;
@@ -102,4 +93,12 @@ export class ArduinoSensors{
           this.category = _category;
           this.houseOwner = _houseOwner;
         }
+}
+
+/*****************************************************
+ * Sensor of temperature and humidity
+ ****************************************************/
+export interface SensorTempHumDto {
+  temperature: number;
+  humidity: number;
 }

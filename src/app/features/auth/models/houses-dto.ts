@@ -38,3 +38,13 @@ export interface HousesJson {
   password:string;
   status:string;
 }
+
+// AJOUT: Interface House pour le typage
+export interface House {
+  HouseId: string | number; // Peut être string ou number selon votre API
+  HouseIP4: string;
+  HouseName: string;
+  IsHouseActive: boolean;
+  homestatus: string;
+  HouseOwner_Id: string | number;
+}

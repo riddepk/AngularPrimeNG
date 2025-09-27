@@ -24,8 +24,8 @@ export class ArduinoSensorComponent implements OnChanges {
 
 @Output() closeRequested = new EventEmitter<void>();
 
-  // ÉVÉNEMENTS DE SORTIE (de l'enfant vers le parent)
-  @Output() sensorLoaded = new EventEmitter<SensorData[]>();
+// ÉVÉNEMENTS DE SORTIE (de l'enfant vers le parent)
+@Output() sensorLoaded = new EventEmitter<SensorData[]>();
 
   // Signals avec le bon typage
   sensorData = signal<SensorData[]>([]);

@@ -4,10 +4,11 @@ import {Component, inject, OnInit, signal} from '@angular/core';
 import {HousesDto, HousesJson} from '../../models/houses-dto';
 import { CommonModule } from '@angular/common';
 import { ArduinoSensorComponent } from '../arduinosensor/arduinosensor';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment.development';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { SensorTempHumDto } from '../../models/arduinosensor-dto';
 
 @Component({
   selector: 'app-maisons',
@@ -32,13 +33,13 @@ export class ListMaisonsComponent implements OnInit{
   listmaisons = signal<HousesJson[]>([]);
   selectedHouse = signal<HousesDto | null>(null);
   showSensors = signal<boolean>(false);
+  sensorTempHumData:SensorTempHumDto | null =null;
 
   HouseId: number = 0;
   HouseName: string = '';
   HouseIP4:string='';
   isactive: boolean = false;
-
-  constructor(private http: HttpClient) {}
+  ArduinoSensorsServices: any;
 
   /************************************************************
   *    Lors de l'affichage de la page ngOnInit() s'execute
@@ -46,6 +47,10 @@ export class ListMaisonsComponent implements OnInit{
   ngOnInit(): void {
     console.log('Token:', this._authservice.currentUser()?.token);
     this.loadHouses();
+/*
+   this.ArduinoSensorsServices.getSensorTempHumData().subscribe((data: SensorTempHumDto | null) => {
+      this.sensorTempHumData = data;
+    });*/
   }
 /***************************************************************
 *            Chargement des maisons
@@ -73,7 +78,12 @@ export class ListMaisonsComponent implements OnInit{
 
   }
 
-
+/*********************************************************************
+ *  Traitement lors de la selection d'une maison
+ *
+ * @param maison
+ *
+ *********************************************************************/
 onSelect(maison: HousesJson): void {
   const mapped: HousesDto = {
                         HouseId: maison.id,
@@ -89,16 +99,24 @@ onSelect(maison: HousesJson): void {
   console.log('Maison sélectionnée:', mapped);
 }
 
-
+/*********************************************************************
+ *        Lors de la fermeture d'une popup
+*********************************************************************/
   close(): void {
     this.selectedHouse.set(null);
     this.showSensors.set(false);
   }
 
+/*********************************************************************
+ *    Lors de la fermeture d'un capteur
+*********************************************************************/
   onCloseSensors(): void {
     this.showSensors.set(false);
   }
 
+  /*********************************************************************
+ *
+*********************************************************************/
   getStatusClass(isActive: boolean): string {
     return isActive ? 'text-green' : 'text-red';
   }
