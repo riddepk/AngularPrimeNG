@@ -35,8 +35,4 @@ export class NavComponent {
     this._router.navigate(['/']);
   }
 
-// ------------------------- gestionDevices()
-  gestionDevices() {
-
-  }
 }

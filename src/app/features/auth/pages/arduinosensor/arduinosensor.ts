@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../../../../environments/environment.development';
 import { HousesDto } from '../../models/houses-dto';
-import {SensorData ,House } from '../../models/arduinosensor-dto';
+import {SensorData  } from '../../models/arduinosensor-dto';
 import { FieldsetModule } from 'primeng/fieldset';
 
 @Component({
