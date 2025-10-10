@@ -19,6 +19,12 @@ export const routes: Routes = [
     loadComponent: () => import("./features/auth/pages/register/register").then(m => m.RegisterComponent),
 
   },
+    {
+    path: 'add-house',
+    // Lazy loading du component (importe le component puis renvois l'instance à l'appel)
+    loadComponent: () => import("./features/auth/pages/add-house/add-house").then(m => m.AddHouseComponent),
+
+    },
   {
     path: 'login',
     // Lazy loading du component (importe le component puis renvois l'instance à l'appel)
@@ -36,9 +42,14 @@ export const routes: Routes = [
     loadComponent: () => import("./features/auth/pages/arduinosensor/arduinosensor").then(m => m.ArduinoSensorComponent),
   },
     {
-    path: 'add-house',
+    path: 'arduinosensors/:username',
     // Lazy loading du component (importe le component puis renvois l'instance à l'appel)
-    loadComponent: () => import("./features/auth/pages/add-house/add-house").then(m => m.AddHouseComponent),
+    loadComponent: () => import("./features/auth/pages/arduinosensor/arduinosensor").then(m => m.ArduinoSensorComponent),
+  },
+    {
+    path: 'add',
+    // Lazy loading du component (importe le component puis renvois l'instance à l'appel)
+    loadComponent: () => import("./features/auth/pages/arduinosensor/add/add").then(m => m.AddComponent),
   },
   {
   path: 'list-users',

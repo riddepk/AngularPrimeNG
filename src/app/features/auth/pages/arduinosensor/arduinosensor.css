@@ -78,5 +78,19 @@
       margin-top: 15px;
     }
 
+    .btn-add-sensors {
+      background: var(--btncreate);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
     .text-green { color: #28a745; }
     .text-red { color: #dc3545; }
+
+    .emoji {
+             font-family: 'Segoe UI Emoji', 'Noto Color Emoji', 'Apple Color Emoji', sans-serif;
+    }

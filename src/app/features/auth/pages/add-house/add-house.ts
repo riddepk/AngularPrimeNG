@@ -73,7 +73,4 @@ export class AddHouseComponent {
     this._router.navigate(['./add-house']);
   }
 
-  gestionDevices() {
-    return;
-  }
 }

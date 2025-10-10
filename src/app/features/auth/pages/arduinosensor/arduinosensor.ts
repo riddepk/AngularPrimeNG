@@ -5,13 +5,13 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../../../../environments/environment.development';
 import { HousesDto } from '../../models/houses-dto';
-import {SensorData  } from '../../models/arduinosensor-dto';
+import { SensorData  } from '../../models/arduinosensor-dto';
 import { FieldsetModule } from 'primeng/fieldset';
 
 @Component({
   selector: 'app-arduinosensor',
   standalone: true,
-  imports: [CommonModule , FieldsetModule ],
+  imports: [CommonModule , FieldsetModule],
   templateUrl: './arduinosensor.html',
      styleUrl: './arduinosensor.css',
   providers: [HttpClient]
@@ -87,6 +87,18 @@ export class ArduinoSensorComponent implements OnChanges {
     this.closeRequested.emit(); // Émet vers le parent
   }
 
+  /*-----------------------------------------------
+          addSensor() Page ajout capteurs
+  ------------------------------------------------- */
+  addSensor(){
+    if(typeof window != 'undefined'){
+      window.location.href='./add/add.html';
+    }
+  }
+
+  /*-----------------------------------------------
+
+  ------------------------------------------------- */
   getStatusClass(isActive: boolean): string {
     return isActive ? 'text-green' : 'text-red';
   }
