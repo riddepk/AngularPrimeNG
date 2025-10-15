@@ -7,6 +7,7 @@ import { environment } from '../../../../../environments/environment.development
 import { HousesDto } from '../../models/houses-dto';
 import { SensorData  } from '../../models/arduinosensor-dto';
 import { FieldsetModule } from 'primeng/fieldset';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-arduinosensor',
@@ -33,7 +34,8 @@ export class ArduinoSensorComponent implements OnChanges {
   error = signal<string | null>(null);
   messageFromParent: any;
 
-  constructor(private http: HttpClient) {
+
+  constructor(private http: HttpClient,private router: Router) {
     // Effect qui réagit aux changements de houseData
     effect(() => {
       const house = this.messageFromParent;
@@ -92,7 +94,7 @@ export class ArduinoSensorComponent implements OnChanges {
   ------------------------------------------------- */
   addSensor(){
     if(typeof window != 'undefined'){
-      window.location.href='./add/add.html';
+      this.router.navigate(['/createsensor']);
     }
   }
 
